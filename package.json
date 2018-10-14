@@ -1,0 +1,85 @@
+{
+    "name": "react-redux-boilerplate",
+    "description": "Simple React/Redux Boilerplate",
+    "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rikunx/react-redux-boilerplate.git"
+    },
+    "private": true,
+    "engines": {
+        "node": ">=8"
+    },
+    "contributors": [
+        {
+            "name": "Bryan Duran",
+            "email": "rikunx@gmail.com"
+        }
+    ],
+    "devDependencies": {
+        "autoprefixer": "^9.0.1",
+        "babel-core": "^6.26.3",
+        "babel-eslint": "^8.2.6",
+        "babel-loader": "^7.1.5",
+        "babel-plugin-prismjs": "^1.0.2",
+        "babel-plugin-syntax-class-properties": "^6.13.0",
+        "babel-plugin-syntax-object-rest-spread": "^6.13.0",
+        "babel-plugin-transform-object-rest-spread": "^6.26.0",
+        "babel-preset-react": "^6.24.1",
+        "clean-webpack-plugin": "^0.1.19",
+        "cross-env": "^5.2.0",
+        "css-loader": "^1.0.0",
+        "eslint": "^5.2.0",
+        "eslint-config-airbnb": "^17.0.0",
+        "eslint-config-prettier": "^3.1.0",
+        "eslint-plugin-import": "^2.13.0",
+        "eslint-plugin-jsx-a11y": "^6.1.1",
+        "eslint-plugin-react": "^7.10.0",
+        "file-loader": "^2.0.0",
+        "html-webpack-plugin": "^3.2.0",
+        "normalize.css": "^8.0.0",
+        "npm-run-all": "^4.1.3",
+        "postcss-loader": "^2.1.6",
+        "prismjs": "^1.15.0",
+        "style-loader": "^0.21.0",
+        "stylus": "^0.54.5",
+        "stylus-loader": "^3.0.2",
+        "url-loader": "^1.0.1",
+        "webpack": "^4.16.2",
+        "webpack-cli": "^3.1.0",
+        "webpack-dev-server": "^3.1.5",
+        "write-file-webpack-plugin": "^4.3.2"
+    },
+    "dependencies": {
+        "@material-ui/core": "^1.4.1",
+        "@material-ui/icons": "^2.0.0",
+        "classnames": "^2.2.6",
+        "compression": "^1.7.3",
+        "cors": "^2.8.4",
+        "express": "^4.16.3",
+        "glob": "^7.1.2",
+        "immutable": "^3.8.2",
+        "moment": "^2.22.2",
+        "prop-types": "^15.6.2",
+        "react": "^16.4.1",
+        "react-day-picker": "^7.2.4",
+        "react-dom": "^16.4.1",
+        "react-redux": "^5.0.7",
+        "react-router-dom": "^4.3.1",
+        "react-select": "^2.1.0",
+        "redux": "^4.0.0",
+        "redux-thunk": "^2.3.0",
+        "stable": "^0.1.8",
+        "yazl": "^2.4.3"
+    },
+    "peerDependencies": {},
+    "scripts": {
+        "npm-run-all": "npm-run-all",
+        "webpack": "webpack --progress",
+        "webpack-watch": "cross-env STATIC_SERVER_PORT=8888 webpack --watch",
+        "devserver": "cross-env STATIC_SERVER_PORT=8888 node server",
+        "dev": "npm-run-all --parallel devserver webpack-watch",
+        "startserver": "node ./server",
+        "start": "npm-run-all webpack startserver"
+    }
+}

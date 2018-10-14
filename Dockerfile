@@ -1,0 +1,20 @@
+FROM node:8
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+COPY package.json ./
+COPY package-lock.json ./
+
+RUN npm install
+
+COPY . .
+
+ENV NODE_ENV=$NODE_ENV
+ENV PARASOL_SERVER_HOST=$PARASOL_SERVER_HOST
+ENV PARASOL_SERVER_PORT=$PARASOL_SERVER_PORT
+ENV PARASOL_MISSION=$PARASOL_MISSION
+
+EXPOSE 8888
+
+CMD ["node", "server"]

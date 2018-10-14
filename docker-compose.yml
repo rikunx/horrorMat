@@ -1,0 +1,13 @@
+version: '1'
+services:
+    app:
+        build: .
+        ports:
+            - 8888:8888
+        environment:
+            - NODE_ENV
+            - PARASOL_SERVER_HOST
+            - PARASOL_SERVER_PORT
+            - PARASOL_MISSION
+            - STATIC_SERVER_MAX_AGE
+        restart: on-failure
