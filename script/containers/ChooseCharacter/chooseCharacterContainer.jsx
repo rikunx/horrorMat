@@ -10,10 +10,8 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
+    dispatch(actions.downloadCharacters());
     return {
-        downloadCharacters() {
-            dispatch(actions.downloadCharacters());
-        }
     };
 }
 

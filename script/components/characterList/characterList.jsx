@@ -6,7 +6,10 @@ import HeaderContainer from '../../containers/Header/headerContainer';
 const CharacterList = ({characters}) => (
     <div id="character-list">
         <HeaderContainer />
-        {characters.map(character => (<div>{character.name}</div>))}
+        <div className="container">
+            <strong>Choose your character:</strong>
+            {characters.map(character => (<div key={character._id}>{character.name}</div>))}
+        </div>
     </div>
 );
 
