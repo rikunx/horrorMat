@@ -3,6 +3,7 @@ const path = require('path');
 
 const http = require('http');
 const express = require('express');
+const bodyParser = require('body-parser');
 const compression = require('compression');
 const cors = require('cors');
 
@@ -19,6 +20,8 @@ const { staticServer } = require('../config');
  */
 function setup() {
     const app = express();
+    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(bodyParser.json())
     app.use(cors());
     app.use(compression());
     app.use(express.static(path.join(__dirname, '../', 'dist'), { maxAge: staticServer.maxAge }));

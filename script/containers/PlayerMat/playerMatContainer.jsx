@@ -3,18 +3,20 @@ import { connect } from 'react-redux';
 import * as actions from './playerMatActions';
 import PlayerMat from '../../components/playerMat/playerMat';
 
-function mapStateToProps(state) {
-    const matState = state.mat;
+function mapStateToProps(state, props) {
+    const matState = state.app;
     return {
-        inventory: matState.get('inventory'),
-        session: matState.get('session')
+        session: matState.session[props.match.params.characterId]
     };
 }
 
-function mapDispatchToProps(dispatch, props) {
+function mapDispatchToProps(dispatch) {
     return {
-        getSession() {
-            dispatch(actions.createSession(props));
+        undo() {
+            dispatch(actions.undo());
+        },
+        redo() {
+            dispatch(actions.redo());
         }
     };
 }

@@ -6,16 +6,12 @@ import '../css/index.styl'; // application stylesheet
 
 import store from './store';
 
-import ChooseCharacterContainer from './containers/ChooseCharacter/chooseCharacterContainer';
-import PlayerMatContainer from './containers/PlayerMat/playerMatContainer';
+import AppContainer from './containers/App/appContainer';
 
 const App = () => (
     <Provider store={store}>
         <Router>
-            <div>
-                <Route exact path='/' component={ChooseCharacterContainer} />
-                <Route path='/mat/:characterId' component={PlayerMatContainer} />
-            </div>
+            <Route path='/' component={AppContainer} />
         </Router>
     </Provider>
 );

@@ -26,6 +26,22 @@ function appRoutes(db) {
             res.status(400).send('Session does not exist!');
     });
 
+    router.put('/session/:sessionId', async(req, res) => {
+        const { sessionId } = req.params;
+        const { characterId, sessionData } = req.body;
+        try {
+            delete sessionData._id;
+            await db.collection('sessions').updateOne({ "_id": new ObjectId(sessionId) }, {
+                $set: {
+                    [characterId]: sessionData }
+            });
+            res.json({ done: true });
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Oops');
+        }
+    });
+
     return router;
 }
 

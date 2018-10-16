@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom'
 
-const CharacterList = ({characters}) => (
+const CharacterList = ({ characters, chooseCharacter }) => (
     <div id="character-list">
         <div id="header">
             <img src="images/eh-logo.png" /> Player Companion
@@ -12,7 +11,7 @@ const CharacterList = ({characters}) => (
             {characters.map(character => {
                 return (
                     <div key={character._id}>
-                        <Link to={`/mat/${character._id}`}>{character.name}</Link>
+                        <a onClick={() => chooseCharacter(character._id)}>{character.name}</a>
                     </div>
                 );
             })}
@@ -21,7 +20,9 @@ const CharacterList = ({characters}) => (
 );
 
 CharacterList.propTypes = {
-    characters: PropTypes.array.isRequired
+    characters: PropTypes.array.isRequired,
+    downloadCharacters: PropTypes.func.isRequired,
+    chooseCharacter: PropTypes.func.isRequired
 };
 
 export default CharacterList;

@@ -6,8 +6,7 @@ services:
             - 8888:8888
         environment:
             - NODE_ENV
-            - PARASOL_SERVER_HOST
-            - PARASOL_SERVER_PORT
-            - PARASOL_MISSION
+            - APP_SERVER_HOST
+            - APP_SERVER_PORT
             - STATIC_SERVER_MAX_AGE
         restart: on-failure

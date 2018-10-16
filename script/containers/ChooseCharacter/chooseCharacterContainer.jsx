@@ -9,9 +9,14 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
-    dispatch(actions.downloadCharacters());
+function mapDispatchToProps(dispatch, props) {
     return {
+        downloadCharacters() {
+            dispatch(actions.downloadCharacters());
+        },
+        chooseCharacter(characterId) {
+            dispatch(actions.chooseCharacter(characterId, props));
+        }
     };
 }
 
