@@ -8,13 +8,11 @@ const CharacterList = ({ characters, chooseCharacter }) => (
         </div>
         <div className="container">
             <strong>Choose your character:</strong>
-            {characters.map(character => {
-                return (
-                    <div key={character._id}>
-                        <a onClick={() => chooseCharacter(character._id)}>{character.name}</a>
-                    </div>
-                );
-            })}
+            {characters.map(character => (
+                <div key={character._id}>
+                    <a onClick={() => chooseCharacter(character._id)}>{character.name}</a>
+                </div>
+            ))}
         </div>
     </div>
 );

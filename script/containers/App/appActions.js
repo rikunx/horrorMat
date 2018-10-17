@@ -1,63 +1,45 @@
 import * as actionTypes from './appActionTypes';
-import * as toastActions from '../Toast/toastActions';
+
+import * as playerMatActions from '../PlayerMat/playerMatActions';
 import * as chooseActions from '../ChooseCharacter/chooseCharacterActions';
 
-export function createSession(props) {
-    return async(dispatch) => {
-        const sessionIdParam = /session\/([^\/]+)/.exec(props.location.pathname);
+export function initialize(props) {
+    return async(dispatch, getState) => {
+        await dispatch(chooseActions.downloadCharacters());
 
+        const sessionIdParam = /session\/([^/]+)/.exec(props.location.pathname);
         let sessionId = sessionIdParam ? sessionIdParam[1] : null;
+        // If session is not present in the URL, create a new one
         if (sessionId === null) {
-            dispatch({
-                type: actionTypes.CreatingSession
+            await dispatch(playerMatActions.createSession());
+
+            sessionId = getState().mat.sessionId;
+            // Navigate to newly created session
+            props.history.push({
+                pathname: `/session/${sessionId}`
             });
-
-            try {
-                const response = await fetch('/session', { method: 'post' });
-                const session = await response.json();
-
-                sessionId = session.insertedIds[0];
-                dispatch({
-                    type: actionTypes.CreatedSession
-                });
-
-                props.history.push({
-                    pathname: `/session/${sessionId}`
-                })
-            } catch (error) {
-                console.error(error);
-                toastActions.show(error.message, true);
-            }
         }
 
-        await dispatch(downloadSession(sessionId));
+        // Download the session
+        await dispatch(playerMatActions.downloadSession(sessionId));
 
-        const matParam = /mat\/([^\/]+)/.exec(props.location.pathname);
-        let matId = matParam ? matParam[1] : null;
+        const matParam = /mat\/([^/]+)/.exec(props.location.pathname);
+        const matId = matParam ? matParam[1] : null;
+        // If mat ID is present in the URL, choose it
         if (matId) {
             await dispatch(chooseActions.chooseCharacter(matId, props));
         }
     }
 }
 
-export function downloadSession(sessionId) {
-    return async(dispatch) => {
-        await dispatch(chooseActions.downloadCharacters());
-        dispatch({ type: actionTypes.DownloadingSession, sessionId });
+export function showSpinner() {
+    return {
+        type: actionTypes.ShowSpinner
+    };
+}
 
-        try {
-            const response = await fetch(`/session/${sessionId}`);
-
-            if (!response.ok) {
-                throw new Error(await response.text());
-            }
-            const session = await response.json();
-            dispatch({
-                type: actionTypes.DownloadedSession,
-                session
-            });
-        } catch (error) {
-            toastActions.show(error, true);
-        }
-    }
+export function hideSpinner() {
+    return {
+        type: actionTypes.HideSpinner
+    };
 }

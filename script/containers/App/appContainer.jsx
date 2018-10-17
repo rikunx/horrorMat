@@ -11,8 +11,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch, props) {
     return {
-        getSession() {
-            dispatch(actions.createSession(props));
+        initialize() {
+            dispatch(actions.initialize(props));
         }
     };
 }

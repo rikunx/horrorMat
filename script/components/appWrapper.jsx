@@ -5,13 +5,18 @@ import { withRouter } from "react-router";
 
 import ChooseCharacterContainer from '../containers/ChooseCharacter/chooseCharacterContainer';
 import PlayerMatContainer from '../containers/PlayerMat/playerMatContainer';
+
+import Spinner from './spinner/spinner';
+
 class AppWrapper extends React.Component {
-    componentDidMount() {
-        this.props.getSession();
+    componentWillMount() {
+        this.props.initialize();
     }
+
     render() {
         return (
             <div>
+                <Spinner open={this.props.spinnerVisible} />
                 <Route exact path='/session/:sessionId' component={ChooseCharacterContainer} />
                 <Route exact path='/session/:sessionId/mat/:characterId' component={PlayerMatContainer} />
             </div>
@@ -20,7 +25,8 @@ class AppWrapper extends React.Component {
 };
 
 AppWrapper.propTypes = {
-    getSession: PropTypes.func.isRequired
+    spinnerVisible: PropTypes.bool.isRequired,
+    initialize: PropTypes.func.isRequired
 };
 
 export default withRouter(AppWrapper);

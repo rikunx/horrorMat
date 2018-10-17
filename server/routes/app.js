@@ -33,7 +33,8 @@ function appRoutes(db) {
             delete sessionData._id;
             await db.collection('sessions').updateOne({ "_id": new ObjectId(sessionId) }, {
                 $set: {
-                    [characterId]: sessionData }
+                    [characterId]: sessionData
+                }
             });
             res.json({ done: true });
         } catch (error) {

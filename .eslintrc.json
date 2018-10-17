@@ -1,0 +1,30 @@
+{
+    "root": true,
+    "parser": "babel-eslint",
+    "extends": ["airbnb/base", "prettier"],
+    "env": {
+        "shared-node-browser": true,
+        "browser": true,
+        "es6": true,
+        "commonjs": true
+    },
+    "plugins": ["eslint-plugin-react"],
+    "rules": {
+        "arrow-parens": ["error", "as-needed"],
+        "func-names": ["off"],
+        "import/no-unresolved": "off",
+        "import/extensions": ["off"],
+        "linebreak-style": ["error", "unix"],
+        "new-cap": ["off"],
+        "no-console": ["off"],
+        "no-multiple-empty-lines": ["error", { "max": 1 }],
+        "no-plusplus": ["off"],
+        "no-underscore-dangle": ["off"],
+        "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+        "one-var": ["off"],
+        "padded-blocks": ["off"],
+        "prefer-destructuring": ["off"],
+        "prefer-template": ["off"],
+        "react/jsx-uses-vars": [2]
+    }
+}
