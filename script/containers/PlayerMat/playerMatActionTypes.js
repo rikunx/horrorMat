@@ -5,4 +5,4 @@ export const DownloadingSession = 'downloading_session';
 export const DownloadedSession = 'downloaded_session';
 
 export const Undo = 'undo';
-export const Redo = 'redu';
+export const Redo = 'redo';
