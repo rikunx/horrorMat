@@ -5,7 +5,7 @@ const app = require('./app');
  * @returns {Router[]} Array of of routers that will be applied as middleware.
  */
 function open(db) {
-    return [app(db)];
+  return [app(db)];
 }
 
 exports.open = open;

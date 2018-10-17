@@ -8,7 +8,7 @@ import * as Toast from './toastActionTypes';
  * @param {number} [hideDelay=10000] - (Optional) Sets the amount of time before a toast is automatically hidden
  */
 export function show(message, isError = false, hideDelay = 10000) {
-    return { type: Toast.Show, message, isError, hideDelay };
+  return { type: Toast.Show, message, isError, hideDelay };
 }
 
 /**
@@ -16,5 +16,5 @@ export function show(message, isError = false, hideDelay = 10000) {
  * @export
  */
 export function hide() {
-    return { type: Toast.Hide };
+  return { type: Toast.Hide };
 }

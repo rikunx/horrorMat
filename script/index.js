@@ -6,5 +6,5 @@ import ReactDOM from 'react-dom';
 import App from './app';
 
 (function() {
-    ReactDOM.render(<App />, document.getElementById('app-ui'));
+  ReactDOM.render(<App />, document.getElementById('app-ui'));
 })();

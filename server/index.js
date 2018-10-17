@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const compression = require('compression');
 const cors = require('cors');
 
-const MongoClient = require('mongodb').MongoClient
+const MongoClient = require('mongodb').MongoClient;
 
 const routes = require('./routes');
 
@@ -19,27 +19,30 @@ const { staticServer } = require('../config');
  * @returns {HTTPListener} HTTP listener
  */
 function setup() {
-    const app = express();
-    app.use(bodyParser.urlencoded({ extended: false }));
-    app.use(bodyParser.json())
-    app.use(cors());
-    app.use(compression());
-    app.use(express.static(path.join(__dirname, '../', 'dist'), { maxAge: staticServer.maxAge }));
-    app.use(express.static(path.join(__dirname, '../', 'media'), { maxAge: staticServer.maxAge }));
+  const app = express();
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.json());
+  app.use(cors());
+  app.use(compression());
+  app.use(express.static(path.join(__dirname, '../', 'dist'), { maxAge: staticServer.maxAge }));
+  app.use(express.static(path.join(__dirname, '../', 'media'), { maxAge: staticServer.maxAge }));
 
-    MongoClient.connect('mongodb://0.0.0.0:27017', (err, client) => {
-        if (err) {
-            console.error(err);
-            process.exit(1);
-        }
-        const db = client.db('horror')
-        app.use(routes.open(db));
+  MongoClient.connect(
+    'mongodb://0.0.0.0:27017',
+    (err, client) => {
+      if (err) {
+        console.error(err);
+        process.exit(1);
+      }
+      const db = client.db('horror');
+      app.use(routes.open(db));
 
-        const listener = http.createServer(app);
-        listener.listen(staticServer.port, staticServer.host, () =>
-            console.log(`Static server listening on http://${staticServer.host}:${staticServer.port}`)
-        );
-    })
+      const listener = http.createServer(app);
+      listener.listen(staticServer.port, staticServer.host, () =>
+        console.log(`Static server listening on http://${staticServer.host}:${staticServer.port}`)
+      );
+    }
+  );
 }
 
 if (!module.parent) setup();
