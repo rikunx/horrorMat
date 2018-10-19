@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import * as actions from './chooseCharacterActions';
+import * as appActions from '../App/appActions';
 import CharacterList from '../../components/characterList/characterList';
 
 function mapStateToProps(state) {
@@ -16,6 +17,9 @@ function mapDispatchToProps(dispatch, props) {
     },
     chooseCharacter(characterId) {
       dispatch(actions.chooseCharacter(characterId, props));
+    },
+    createNewSession() {
+      dispatch(appActions.createSession(props));
     }
   };
 }

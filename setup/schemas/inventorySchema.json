@@ -1,0 +1,55 @@
+{
+  "validator": {
+    "$jsonSchema": {
+      "bsonType": "object",
+      "required": ["name", "card", "category", "type"],
+      "properties": {
+        "name": {
+          "bsonType": "string",
+          "description": "must be a string and is required"
+        },
+        "card": {
+          "enum": ["asset", "artifact", "relic", "spell"],
+          "description": "can only be one of the enum values and is required"
+        },
+        "category": {
+          "enum": ["item"],
+          "description": "can only be one of the enum values and is required"
+        },
+        "type": {
+          "enum": ["item", "weapon", "trinket"],
+          "description": "can only be one of the enum values and is required"
+        },
+        "test": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "situation": {
+                "enum": ["combat", "test", "any"],
+                "description": "can only be one of the enum values and is required"
+              },
+              "attribute": {
+                "enum": ["strength", "will", "lore", "influence", "observation", "roll"],
+                "description": "can only be one of the enum values and is required"
+              },
+              "bonus": {
+                "bsonType": "int",
+                "description": "must be an int and is required"
+              },
+              "oncePerRound": {
+                "type": "boolean",
+                "description": "must be a boolean and is required"
+              },
+              "disposable": {
+                "type": "boolean",
+                "description": "must be a boolean and is required"
+              }
+            }
+          },
+          "description": "must be an array and is required"
+        }
+      }
+    }
+  }
+}

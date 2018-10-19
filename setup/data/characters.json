@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Lily Chen",
+    "nickname": "The Martial Artist",
+    "baseHealth": 6,
+    "baseSanity": 6,
+    "lore": 2,
+    "influence": 3,
+    "observation": 4,
+    "strength": 3,
+    "will": 2,
+    "inventory": ["Protective Amulet", "Lucky Rabbit's Foot"]
+  },
+  {
+    "name": "Trish Scarborough",
+    "nickname": "The Spy",
+    "baseHealth": 7,
+    "baseSanity": 5,
+    "lore": 1,
+    "influence": 3,
+    "observation": 4,
+    "strength": 3,
+    "will": 2,
+    "inventory": [".45 Automatic"]
+  }
+]

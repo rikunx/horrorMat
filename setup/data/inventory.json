@@ -1,0 +1,47 @@
+[
+  {
+    "name": ".45 Automatic",
+    "card": "asset",
+    "category": "item",
+    "type": "weapon",
+    "test": [
+      {
+        "situation": "combat",
+        "attribute": "strength",
+        "bonus": 3,
+        "oneShot": false,
+        "disposable": false
+      }
+    ]
+  },
+  {
+    "name": "Lucky Rabbit's Foot",
+    "card": "asset",
+    "category": "item",
+    "type": "trinket",
+    "test": [
+      {
+        "situation": "any",
+        "attribute": "roll",
+        "bonus": 1,
+        "oneShot": true,
+        "disposable": false
+      }
+    ]
+  },
+  {
+    "name": "Protective Amulet",
+    "card": "asset",
+    "category": "item",
+    "type": "item",
+    "test": [
+      {
+        "situation": "combat",
+        "attribute": "will",
+        "bonus": 1,
+        "oneShot": false,
+        "disposable": false
+      }
+    ]
+  }
+]

@@ -1,0 +1,61 @@
+{
+  "validator": {
+    "$jsonSchema": {
+      "bsonType": "object",
+      "required": [
+        "name",
+        "nickname",
+        "baseHealth",
+        "baseSanity",
+        "lore",
+        "influence",
+        "observation",
+        "strength",
+        "will",
+        "inventory"
+      ],
+      "properties": {
+        "name": {
+          "bsonType": "string",
+          "description": "must be a string and is required"
+        },
+        "nickname": {
+          "bsonType": "string",
+          "description": "must be a string and is required"
+        },
+        "baseHealth": {
+          "bsonType": "int",
+          "description": "must be an int and is required"
+        },
+        "baseSanity": {
+          "bsonType": "int",
+          "description": "must be an int and is required"
+        },
+        "lore": {
+          "bsonType": "int",
+          "description": "must be an int and is required"
+        },
+        "influence": {
+          "bsonType": "int",
+          "description": "must be an int and is required"
+        },
+        "observation": {
+          "bsonType": "int",
+          "description": "must be an int and is required"
+        },
+        "strength": {
+          "bsonType": "int",
+          "description": "must be an int and is required"
+        },
+        "will": {
+          "bsonType": "int",
+          "description": "must be an int and is required"
+        },
+        "inventory": {
+          "bsonType": "array",
+          "description": "must be an array and is required"
+        }
+      }
+    }
+  }
+}

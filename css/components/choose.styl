@@ -1,15 +1,35 @@
-#header
-    background-color: #4D72B9
+#character-list
+  #header
+    background: $dark url('../media/images/header.jpg') no-repeat center center
+    background-size: cover
     display: flex
     align-items: center
-    font-size: 6vw
+    font-size: 7.5vw
     font-family: 'Eldritch'
-    color: #fff
+    color: $white
+    text-shadow: -2px -2px 0 $outline, 2px -2px 0 $outline, -2px 2px 0 $outline, 2px 2px 0 $outline
 
     img
-        width: 30%
-        height: auto
+      width: 30%
+      height: auto
 
-#character-list
-    .container
-        margin: 1em
+    .delete-icon
+      position: absolute
+      right: 10px
+      top: 10px
+      cursor: pointer
+
+  .container
+    font-weight: bold
+    margin: 1em
+
+    h1
+      margin: 0
+
+    a
+      font-size: 1.5em
+      color: $link
+      cursor: pointer
+      &:hover
+        text-decoration: underline
+

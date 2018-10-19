@@ -15,7 +15,7 @@ class AppWrapper extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="container">
         <Spinner open={this.props.spinnerVisible} />
         <Route exact path="/session/:sessionId" component={ChooseCharacterContainer} />
         <Route exact path="/session/:sessionId/mat/:characterId" component={PlayerMatContainer} />

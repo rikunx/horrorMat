@@ -7,7 +7,16 @@ function appRoutes(db) {
   router.get('/characters', async (_, res) => {
     const characters = await db
       .collection('characters')
-      .find()
+      .aggregate([
+        {
+          $lookup: {
+            from: 'inventory',
+            localField: 'inventory',
+            foreignField: 'name',
+            as: 'inventory'
+          }
+        }
+      ])
       .toArray();
     res.json(characters);
   });
