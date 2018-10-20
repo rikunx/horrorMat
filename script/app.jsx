@@ -6,13 +6,16 @@ import '../css/index.styl'; // application stylesheet
 
 import store from './store';
 
+import ThemeWrapper from './components/themeWrapper';
 import AppContainer from './containers/App/appContainer';
 
 const App = () => (
   <Provider store={store}>
-    <Router>
-      <Route path="/" component={AppContainer} />
-    </Router>
+    <ThemeWrapper>
+      <Router>
+        <Route path="/" component={AppContainer} />
+      </Router>
+    </ThemeWrapper>
   </Provider>
 );
 

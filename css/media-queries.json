@@ -1,0 +1,11 @@
+{
+  "small": "screen and (max-width:400px)",
+  "medium": {
+    "landscape": "screen and (min-width:500px) and (orientation:landscape)",
+    "portrait": "screen and (min-width:500px) and (orientation:portrait)"
+  },
+  "large": {
+    "landscape": "screen and (min-width:800px) and (orientation:landscape)",
+    "portrait": "screen and (min-width:800px) and (orientation:portrait)"
+  }
+}

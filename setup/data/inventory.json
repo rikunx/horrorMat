@@ -1,6 +1,7 @@
 [
   {
     "name": ".45 Automatic",
+    "image": "45_Automatic.jpg",
     "card": "asset",
     "category": "item",
     "type": "weapon",
@@ -16,6 +17,7 @@
   },
   {
     "name": "Lucky Rabbit's Foot",
+    "image": "Lucky_Rabbits_Foot.jpg",
     "card": "asset",
     "category": "item",
     "type": "trinket",
@@ -31,6 +33,7 @@
   },
   {
     "name": "Protective Amulet",
+    "image": "Protective_Amulet.jpg",
     "card": "asset",
     "category": "item",
     "type": "item",

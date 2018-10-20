@@ -1,22 +1,69 @@
+json('../media-queries.json')
+
 #player-mat
+  display: flex
   background: $dark url('../media/images/book.jpg') top left
   background-size: cover
   height: 100%
   margin: 0
 
-  #profile-placeholder
-    position: relative
-    border: 1px solid $dark
-    top: 5vmax
-    left: 7vmax
-    width: 20vmax
-    height: 20vmax
+  #profile
+    flex-grow: 1
+    display: inline-flex
+    align-items: stretch;
 
-    #profile-pic
+    @media small
+      margin-top: 5vmax
+      margin-left: 5vmax
+    @media medium-landscape
+      margin-top: 7vmax
+      margin-left: 10vmax
+
+    #profile-placeholder
+      display: inline-block
       position: relative
-      left: 5px
-      width: 95%
-      height: 95%
-      border: 5px solid $white
-      transform: rotate(-3deg)
+      border: 1px solid $dark
+      width: 20vmax
+      height: 20vmax
 
+      #profile-pic
+        display: inline-block
+        margin-left: 5px
+        width: 95%
+        height: auto
+        border: 5px solid $white
+        box-shadow: 1px 1px grey;
+        transform: rotate(-3deg)
+
+        img
+          display: block
+          width: 100%
+
+    #profile-info
+      flex-grow: 1
+      text-align: center
+      padding: 0 1em
+
+      @media medium-landscape
+        padding: 0 6em 0 1em
+
+      @media large-landscape
+        padding: 0 8em 0 1em
+
+      .profile-label
+        font-size: .8em
+        line-height: 1em
+
+      #player-name
+        line-height: 2em
+        font-size: 1.5em
+        font-weight: bold
+        margin-bottom: 1em
+
+      #player-occupation
+        line-height: 2em
+        font-size: 1.2em
+
+      hr
+        border-style: solid
+        margin: 0

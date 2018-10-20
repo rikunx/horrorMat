@@ -1,7 +1,8 @@
 [
   {
     "name": "Lily Chen",
-    "nickname": "The Martial Artist",
+    "occupation": "The Martial Artist",
+    "image": "Lily_Chen.jpg",
     "baseHealth": 6,
     "baseSanity": 6,
     "lore": 2,
@@ -13,7 +14,8 @@
   },
   {
     "name": "Trish Scarborough",
-    "nickname": "The Spy",
+    "occupation": "The Spy",
+    "image": "Trish_Scarborough.jpg",
     "baseHealth": 7,
     "baseSanity": 5,
     "lore": 1,

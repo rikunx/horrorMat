@@ -1,15 +1,14 @@
 import React from 'react';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import teal from '@material-ui/core/colors/teal';
-import cyan from '@material-ui/core/colors/cyan';
+import indigo from '@material-ui/core/colors/indigo';
 
 const defaultTheme = createMuiTheme({
   palette: {
     primary: {
-      main: teal[500]
+      main: indigo[900]
     },
     secondary: {
-      main: cyan[500]
+      main: indigo[100]
     }
   }
 });

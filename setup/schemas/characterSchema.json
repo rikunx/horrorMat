@@ -4,7 +4,8 @@
       "bsonType": "object",
       "required": [
         "name",
-        "nickname",
+        "occupation",
+        "image",
         "baseHealth",
         "baseSanity",
         "lore",
@@ -19,7 +20,11 @@
           "bsonType": "string",
           "description": "must be a string and is required"
         },
-        "nickname": {
+        "occupation": {
+          "bsonType": "string",
+          "description": "must be a string and is required"
+        },
+        "image": {
           "bsonType": "string",
           "description": "must be a string and is required"
         },

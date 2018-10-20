@@ -2,7 +2,8 @@ import * as actionTypes from './appActionTypes';
 
 const defaultState = {
   spinnerVisible: false,
-  ongoingRequests: 0
+  ongoingRequests: 0,
+  fullscreen: false
 };
 
 function appReducer(state = defaultState, action) {
@@ -21,6 +22,16 @@ function appReducer(state = defaultState, action) {
         spinnerVisible: ongoingRequests > 0
       };
     }
+    case actionTypes.Fullscreen:
+      return {
+        ...state,
+        fullscreen: true
+      };
+    case actionTypes.CloseFullscreen:
+      return {
+        ...state,
+        fullscreen: false
+      };
     default:
       return state;
   }

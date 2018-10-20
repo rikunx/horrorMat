@@ -6,23 +6,31 @@ const inventorySchema = require('./schemas/inventorySchema.json');
 const characters = require('./data/characters.json');
 const inventory = require('./data/inventory.json');
 
-MongoClient.connect(
-  'mongodb://0.0.0.0:27017',
-  (err, client) => {
-    if (err) {
-      console.error(err);
-      process.exit(1);
-    }
+(async () => {
+  try {
+    const client = await MongoClient.connect(
+      'mongodb://0.0.0.0:27017',
+      { useNewUrlParser: true }
+    );
+
     const db = client.db('horror');
-    // validate db
-    db.createCollection('characters', characterSchema, (error, collection) => {
-      if (!error) collection.insertMany(characters);
-      else console.error(error);
-    });
-    db.createCollection('inventory', inventorySchema, (error, collection) => {
-      if (!error) collection.insertMany(inventory);
-      else console.error(error);
-    });
-    // process.exit(0);
+    let charactersCollection = await db.collection('characters');
+    await charactersCollection.drop();
+    charactersCollection = await db.createCollection('characters', characterSchema);
+
+    charactersCollection.createIndex({ name: -1 }, { unique: true });
+    await charactersCollection.insertMany(characters);
+
+    let inventoryCollection = await db.collection('inventory');
+    await inventoryCollection.drop();
+    inventoryCollection = await db.createCollection('inventory', inventorySchema);
+
+    inventoryCollection.createIndex({ name: -1 }, { unique: true });
+    await inventoryCollection.insertMany(inventory);
+
+    process.exit(0);
+  } catch (error) {
+    console.error(error);
+    process.exit(1);
   }
-);
+})();

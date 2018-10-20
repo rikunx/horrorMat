@@ -3,6 +3,36 @@ import * as actionTypes from './appActionTypes';
 import * as playerMatActions from '../PlayerMat/playerMatActions';
 import * as chooseActions from '../ChooseCharacter/chooseCharacterActions';
 
+function openFullscreen(elem) {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) {
+    /* Firefox */
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) {
+    /* Chrome, Safari and Opera */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) {
+    /* IE/Edge */
+    elem.msRequestFullscreen();
+  }
+}
+
+function closeFullscreen(elem) {
+  if (elem.exitFullscreen) {
+    elem.exitFullscreen();
+  } else if (elem.mozCancelFullScreen) {
+    /* Firefox */
+    elem.mozCancelFullScreen();
+  } else if (elem.webkitExitFullscreen) {
+    /* Chrome, Safari and Opera */
+    elem.webkitExitFullscreen();
+  } else if (elem.msExitFullscreen) {
+    /* IE/Edge */
+    elem.msExitFullscreen();
+  }
+}
+
 export function initialize(props) {
   return async dispatch => {
     await dispatch(chooseActions.downloadCharacters());
@@ -41,5 +71,19 @@ export function showSpinner() {
 export function hideSpinner() {
   return {
     type: actionTypes.HideSpinner
+  };
+}
+
+export function openFullScreen() {
+  return dispatch => {
+    dispatch({ type: actionTypes.Fullscreen });
+    openFullscreen(document.documentElement);
+  };
+}
+
+export function closeFullScreen() {
+  return dispatch => {
+    dispatch({ type: actionTypes.CloseFullscreen });
+    closeFullscreen(document);
   };
 }

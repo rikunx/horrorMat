@@ -6,7 +6,7 @@ const Spinner = ({ open, fixed = false, size = 50 }) => {
   if (!open) return null;
   return (
     <div className={`spinner ${fixed ? 'fixed' : ''}`}>
-      <CircularProgress size={size} />
+      <CircularProgress size={size} color="primary" />
       <div className="spinner-overlay" />
     </div>
   );
