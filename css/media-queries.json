@@ -7,5 +7,6 @@
   "large": {
     "landscape": "screen and (min-width:800px) and (orientation:landscape)",
     "portrait": "screen and (min-width:800px) and (orientation:portrait)"
-  }
+  },
+  "monitor": "screen and (min-width:1000px)"
 }

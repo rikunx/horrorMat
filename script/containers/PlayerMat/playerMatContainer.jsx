@@ -13,10 +13,17 @@ function mapStateToProps(state, props) {
       : {
           name: '',
           occupation: '',
+          health: 0,
+          sanity: 0,
+          lore: 0,
+          influence: 0,
+          observation: 0,
+          strength: 0,
+          will: 0,
+          improvements: {},
           image: '',
           inventory: []
         };
-  console.log(mat);
   return {
     ...mat,
     fullscreen

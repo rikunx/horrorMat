@@ -14,15 +14,25 @@ const inventory = require('./data/inventory.json');
     );
 
     const db = client.db('horror');
-    let charactersCollection = await db.collection('characters');
-    await charactersCollection.drop();
+    let charactersCollection;
+    try {
+      charactersCollection = await db.collection('characters');
+      await charactersCollection.drop();
+    } catch (e) {
+      console.error(e);
+    }
     charactersCollection = await db.createCollection('characters', characterSchema);
 
     charactersCollection.createIndex({ name: -1 }, { unique: true });
     await charactersCollection.insertMany(characters);
 
-    let inventoryCollection = await db.collection('inventory');
-    await inventoryCollection.drop();
+    let inventoryCollection;
+    try {
+      inventoryCollection = await db.collection('inventory');
+      await inventoryCollection.drop();
+    } catch (e) {
+      console.error(e);
+    }
     inventoryCollection = await db.createCollection('inventory', inventorySchema);
 
     inventoryCollection.createIndex({ name: -1 }, { unique: true });

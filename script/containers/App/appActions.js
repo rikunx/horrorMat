@@ -78,6 +78,25 @@ export function openFullScreen() {
   return dispatch => {
     dispatch({ type: actionTypes.Fullscreen });
     openFullscreen(document.documentElement);
+
+    function exitHandler() {
+      if (
+        !document.fullscreenElement &&
+        !document.webkitIsFullScreen &&
+        !document.mozFullScreen &&
+        !document.msFullscreenElement
+      ) {
+        dispatch({ type: actionTypes.CloseFullscreen });
+        document.removeEventListener('webkitfullscreenchange', exitHandler);
+        document.removeEventListener('mozfullscreenchange', exitHandler);
+        document.removeEventListener('fullscreenchange', exitHandler);
+        document.removeEventListener('MSFullscreenChange', exitHandler);
+      }
+    }
+    document.addEventListener('webkitfullscreenchange', exitHandler);
+    document.addEventListener('mozfullscreenchange', exitHandler);
+    document.addEventListener('fullscreenchange', exitHandler);
+    document.addEventListener('MSFullscreenChange', exitHandler);
   };
 }
 

@@ -13,6 +13,7 @@
         "observation",
         "strength",
         "will",
+        "improvements",
         "inventory"
       ],
       "properties": {
@@ -36,6 +37,14 @@
           "bsonType": "int",
           "description": "must be an int and is required"
         },
+        "health": {
+          "bsonType": "int",
+          "description": "must be an int and is required"
+        },
+        "sanity": {
+          "bsonType": "int",
+          "description": "must be an int and is required"
+        },
         "lore": {
           "bsonType": "int",
           "description": "must be an int and is required"
@@ -55,6 +64,42 @@
         "will": {
           "bsonType": "int",
           "description": "must be an int and is required"
+        },
+        "improvements": {
+          "bsonType": "object",
+          "required": ["lore", "influence", "observation", "strength", "will"],
+          "properties": {
+            "lore": {
+              "bsonType": "int",
+              "minimum": 0,
+              "maximum": 2,
+              "description": "must be an int and is required"
+            },
+            "influence": {
+              "bsonType": "int",
+              "minimum": 0,
+              "maximum": 2,
+              "description": "must be an int and is required"
+            },
+            "observation": {
+              "bsonType": "int",
+              "minimum": 0,
+              "maximum": 2,
+              "description": "must be an int and is required"
+            },
+            "strength": {
+              "bsonType": "int",
+              "minimum": 0,
+              "maximum": 2,
+              "description": "must be an int and is required"
+            },
+            "will": {
+              "bsonType": "int",
+              "minimum": 0,
+              "maximum": 2,
+              "description": "must be an int and is required"
+            }
+          }
         },
         "inventory": {
           "bsonType": "array",
