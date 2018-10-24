@@ -86,6 +86,15 @@ function appRoutes(db) {
     }
   });
 
+  router.get('/roll', (req, res) => {
+    const { dice } = req.query;
+    const results = [];
+    const sides = 6;
+    for (let i = dice; i > 0; --i) {
+      results.push(Math.floor(Math.random() * sides) + 1);
+    }
+    res.json({ results });
+  });
   return router;
 }
 
