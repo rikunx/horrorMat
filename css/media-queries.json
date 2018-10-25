@@ -1,12 +1,7 @@
 {
-  "small": "screen and (max-width:400px)",
-  "medium": {
-    "landscape": "screen and (min-width:500px) and (orientation:landscape)",
-    "portrait": "screen and (min-width:500px) and (orientation:portrait)"
-  },
-  "large": {
-    "landscape": "screen and (min-width:800px) and (orientation:landscape)",
-    "portrait": "screen and (min-width:800px) and (orientation:portrait)"
-  },
-  "monitor": "screen and (min-width:1000px)"
+  "small": "screen and (min-width: 320px) and (max-width: 480px)",
+  "mobile": "screen and (min-width: 481px) and (max-width: 767px)",
+  "tablet": "screen and (min-width: 768px) and (max-width: 800px)",
+  "sd-monitor": "screen and (min-width: 801px) and (max-width: 1280px)",
+  "hd-monitor": "screen and (min-width:1281px)"
 }

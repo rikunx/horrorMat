@@ -6,6 +6,7 @@
         "name",
         "occupation",
         "image",
+        "abilities",
         "baseHealth",
         "baseSanity",
         "lore",
@@ -24,6 +25,38 @@
         "occupation": {
           "bsonType": "string",
           "description": "must be a string and is required"
+        },
+        "abilities": {
+          "bsonType": "array",
+          "description": "Must be an array and is required",
+          "items": {
+            "bsonType": "object",
+            "required": ["type", "bonus"],
+            "properties": {
+              "type": {
+                "enum": ["reroll"],
+                "description": "can only be one of the enum values and is required"
+              },
+              "cost": {
+                "bsonType": "object",
+                "required": ["type", "value"],
+                "properties": {
+                  "type": {
+                    "enum": ["clue", "health", "sanity"],
+                    "description": "can only be one of the enum values and is required"
+                  },
+                  "value": {
+                    "bsonType": "int",
+                    "description": "must be an int and is required"
+                  }
+                }
+              },
+              "bonus": {
+                "bsonType": "int",
+                "description": "must be an int and is required"
+              }
+            }
+          }
         },
         "image": {
           "bsonType": "string",

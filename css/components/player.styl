@@ -9,9 +9,24 @@ json('../media-queries.json')
   @media small
     padding-top: 5vmax
     padding-left: 5vmax
-  @media medium-landscape
+    padding-right: 1.5vmax
+  @media mobile
     padding-top: 7vmax
-    padding-left: 10vmax
+    padding-left: 7vmax
+    padding-right: 12vmax
+  @media tablet
+    padding-top: 7vmax
+    padding-left: 7vmax
+    padding-right: 10vmax
+  @media sd-monitor
+    padding-top: 7vmax
+    padding-left: 7vmax
+    padding-right: 12vmax
+  @media hd-monitor
+    padding-top: 7vmax
+    padding-left: 7vmax
+    padding-right: 12vmax
+
 
   #profile
     width: 100%
@@ -41,16 +56,7 @@ json('../media-queries.json')
     #profile-info
       flex-grow: 1
       text-align: center
-      padding: 0 1em
-
-      @media medium-landscape
-        padding: 0 6em 0 1em
-
-      @media large-landscape
-        padding: 0 8em 0 1em
-
-      @media monitor
-        padding-right: 18em
+      padding: 0 0 0 1em
 
       .profile-label
         font-size: .8em

@@ -2,6 +2,7 @@
   {
     "name": "Lily Chen",
     "occupation": "The Martial Artist",
+    "abilities": [],
     "image": "Lily_Chen.jpg",
     "baseHealth": 6,
     "baseSanity": 6,
@@ -24,6 +25,16 @@
   {
     "name": "Trish Scarborough",
     "occupation": "The Spy",
+    "abilities": [
+      {
+        "type": "reroll",
+        "cost": {
+          "type": "clue",
+          "value": 1
+        },
+        "bonus": 1
+      }
+    ],
     "image": "Trish_Scarborough.jpg",
     "baseHealth": 7,
     "baseSanity": 5,
