@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 
-import * as actions from './playerMatActions';
-import * as appActions from '../App/appActions';
-import PlayerMat from '../../components/playerMat/playerMat';
+import * as actions from './rollActions';
+import RollPad from '../../components/roll/roll';
 
 function mapStateToProps(state) {
   return {
@@ -10,19 +9,10 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch, props) {
   return {
-    undo() {
-      dispatch(actions.undo());
-    },
-    redo() {
-      dispatch(actions.redo());
-    },
-    openFullscreen() {
-      dispatch(appActions.openFullScreen());
-    },
-    closeFullscreen() {
-      dispatch(appActions.closeFullScreen());
+    roll() {
+      dispatch(actions.rolling(props.baseRoll));
     }
   };
 }
@@ -30,4 +20,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PlayerMat);
+)(RollPad);

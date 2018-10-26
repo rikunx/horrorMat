@@ -7,7 +7,7 @@ const defaultState = {
   sessionId: null,
   matId: null,
   session: null,
-  mat: {
+  character: {
     inventory: []
   }
 };
@@ -26,7 +26,7 @@ function playerMatReducer(state = defaultState, action) {
         .filter(key => key !== '_id')
         .reduce((immutableSession, characterKey) => {
           Object.assign(immutableSession, { [characterKey]: new rigmarole(100) });
-          immutableSession[characterKey].set('mat', sessionData[characterKey]);
+          immutableSession[characterKey].set('character', sessionData[characterKey]);
           return immutableSession;
         }, {});
       return {
@@ -41,11 +41,12 @@ function playerMatReducer(state = defaultState, action) {
       const session = state.session;
       if (!session[characterId]) {
         session[characterId] = new rigmarole(100);
-        session[characterId].set('mat', character);
+        session[characterId].set('character', character);
       }
       return {
         ...state,
         matId: characterId,
+        character: session[characterId],
         session
       };
     }

@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 
 import Icon from '@material-ui/core/Icon';
 
+import RollContainer from '../../containers/Roll/rollContainer';
+
+import { Attributes } from '../../enum';
+
 const generateProfilePicPath = imageName => {
   if (imageName) return `../../../images/character_profiles/${imageName}`;
   return '';
@@ -21,7 +25,8 @@ const PlayerMat = ({
   improvements,
   fullscreen,
   openFullscreen,
-  closeFullscreen
+  closeFullscreen,
+  roll
 }) => (
   <div id="player-mat">
     <Icon
@@ -79,7 +84,7 @@ const PlayerMat = ({
           <div className="stat">{observation}</div>
           <div className="improvement-stat">{improvements.observation}</div>
         </div>
-        <div className="attribute-container">
+        <div className="attribute-container" onClick={() => roll(Attributes.STRENGTH)}>
           <div className="attribute-label">Strength</div>
           <div className="strength eldritch-icon">F</div>
           <div className="stat">{strength}</div>
@@ -93,6 +98,7 @@ const PlayerMat = ({
         </div>
       </div>
     </div>
+    <RollContainer />
   </div>
 );
 
@@ -110,7 +116,8 @@ PlayerMat.propTypes = {
   improvements: PropTypes.object.isRequired,
   fullscreen: PropTypes.bool.isRequired,
   openFullscreen: PropTypes.func.isRequired,
-  closeFullscreen: PropTypes.func.isRequired
+  closeFullscreen: PropTypes.func.isRequired,
+  roll: PropTypes.func.isRequired
 };
 
 export default PlayerMat;

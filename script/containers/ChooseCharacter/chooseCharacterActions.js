@@ -49,18 +49,19 @@ export function chooseCharacter(characterId, props) {
           })
         });
         await response.json();
-
-        dispatch({
-          type: actionTypes.ChooseCharacter,
-          character,
-          characterId
-        });
       } catch (error) {
         dispatch(toastActions.show(error.message, true));
       } finally {
         dispatch(appActions.hideSpinner());
       }
     }
+
+    dispatch({
+      type: actionTypes.ChooseCharacter,
+      character,
+      characterId
+    });
+
     if (props.location.pathname !== `/session/${sessionId}/mat/${characterId}`) {
       props.history.push({
         pathname: `/session/${sessionId}/mat/${characterId}`
