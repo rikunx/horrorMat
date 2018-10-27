@@ -76,28 +76,96 @@ json('../media-queries.json')
         border-style: solid
         margin: 0
 
+  #physiological-index-area
+    display: flex
+    justify-content: space-between
+    .physiological-index
+      position: relative
+      display: inline-block
+      border: 1px solid $dark
+      width: 11vmax
+      height: 11vmax
+
+      .index-label
+        font-size: 0.6em
+        border-bottom: 1px solid $dark
+        text-align: center
+        line-height: 1em
+        padding-top: 0.3em
+
+      .health, .sanity
+        font-size: 8em
+        line-height: 1em
+        cursor: pointer
+        position: absolute
+
+      .health
+        top: 15%
+        left: -6%
+
+      .sanity
+        top: 15%
+        left: -15%
+
+      .index-value
+        .stat
+          position: absolute
+          font-size: 3em
+          border-radius: 50%
+          border: 1px solid
+          padding: 2px
+
+          .inner-circle
+            display: inline-flex
+            align-items: center
+            justify-content: center
+            min-width: 1em
+            border-radius: 50%
+            border: 3px solid
+            vertical-align: middle
+            box-sizing: content-box
+
+            &:before
+              content:''
+              float: left
+              width: auto
+              padding-bottom: 100%
+
+            span
+              padding-top: 0.3em
+
+          &.health-stat
+            color: $red
+            border-color: $red
+            top: 18%
+            right: 3%
+            transform: rotate(-15deg)
+          &.sanity-stat
+            color: $blue
+            border-color: $blue
+            bottom: 4%
+            right: 0
+            transform: rotate(10deg)
+
   #stats-area
     display: flex
-    #physiological-index-area
-      display: flex
-      justify-content: space-between
-      min-width: 20vmax
-      .physiological-index
-        display: inline-block
-        border: 1px solid $dark
-        width: 9vmax
-
-        .health, .sanity
-          font-size: 5em
-          line-height: 1em
-          cursor: pointer
 
     .attribute-container
       width: 8vmax
       border: 1px solid $dark
+
+      .stat
+        font-family: $attributefamily
+        font-size: 3em
+        color: $light
     #attributes
       display: flex
       flex-wrap: wrap
+
+      .attribute-label
+        line-height: 1.3em
+        border-bottom: 1px solid $dark
+        text-align: center
 
       .eldritch-icon
         font-size: 3em

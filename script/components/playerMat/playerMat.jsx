@@ -7,6 +7,8 @@ import RollContainer from '../../containers/Roll/rollContainer';
 
 import { Attributes } from '../../enum';
 
+import NumberCircle from './indexCircle';
+
 const generateProfilePicPath = imageName => {
   if (imageName) return `../../../images/character_profiles/${imageName}`;
   return '';
@@ -55,17 +57,36 @@ const PlayerMat = ({
         <div id="player-occupation">{occupation}</div>
       </div>
     </div>
-    <div id="stats-area">
-      <div id="physiological-index-area">
-        <div className="physiological-index">
-          <div className="health eldritch-icon">K</div>
-          <div className="stat">{health}</div>
+    <div id="physiological-index-area">
+      <div className="physiological-index">
+        <div className="index-label">
+          <div>PHYSIOLOGICAL INDEX</div>
         </div>
-        <div className="physiological-index">
-          <div className="sanity eldritch-icon">L</div>
-          <div className="stat">{sanity}</div>
+        <div className="index-value">
+          <div className="health eldritch-icon">K</div>
+          <NumberCircle>{health}</NumberCircle>
+          <div className="stat health-stat">
+            <div className="inner-circle">
+              <span>{health}</span>
+            </div>
+          </div>
         </div>
       </div>
+      <div className="physiological-index">
+        <div className="index-label">
+          <div>PHYSIOLOGICAL INDEX</div>
+        </div>
+        <div className="index-value">
+          <div className="sanity eldritch-icon">L</div>
+          <div className="stat sanity-stat">
+            <div className="inner-circle">
+              <span>{sanity}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="stats-area">
       <div id="attributes">
         <div className="attribute-container" onClick={() => promptRoll(Attributes.LORE)}>
           <div className="attribute-label">Lore</div>
