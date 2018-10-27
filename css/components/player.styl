@@ -61,6 +61,7 @@ json('../media-queries.json')
       .profile-label
         font-size: .8em
         line-height: 1em
+        color: $dark
 
       #player-name
         line-height: 2em
@@ -74,13 +75,13 @@ json('../media-queries.json')
 
       hr
         border-style: solid
+        border-color: $dark
         margin: 0
 
   #physiological-index-area
     display: flex
     justify-content: space-between
     .physiological-index
-      position: relative
       display: inline-block
       border: 1px solid $dark
       width: 11vmax
@@ -93,19 +94,38 @@ json('../media-queries.json')
         line-height: 1em
         padding-top: 0.3em
 
+      .index-value
+        position: relative
+        height: 100%
+
       .health, .sanity
-        font-size: 8em
-        line-height: 1em
         cursor: pointer
+
+      .eldritch-icon
         position: absolute
+        font-size: 12vmax
+        line-height: 1em
 
       .health
-        top: 15%
-        left: -6%
+        .eldritch-icon
+          left: -6%
+        .stat
+          color: $red
+          border-color: $red
+          top: 18%
+          right: 3%
+          transform: rotate(-15deg)
 
       .sanity
-        top: 15%
-        left: -15%
+        .eldritch-icon
+          left: -15%
+
+        .stat
+          color: $blue
+          border-color: $blue
+          bottom: 4%
+          right: -4%
+          transform: rotate(10deg)
 
       .index-value
         .stat
@@ -134,42 +154,140 @@ json('../media-queries.json')
             span
               padding-top: 0.3em
 
-          &.health-stat
-            color: $red
-            border-color: $red
-            top: 18%
-            right: 3%
-            transform: rotate(-15deg)
-          &.sanity-stat
-            color: $blue
-            border-color: $blue
-            bottom: 4%
-            right: 0
-            transform: rotate(10deg)
-
   #stats-area
     display: flex
 
-    .attribute-container
-      width: 8vmax
-      border: 1px solid $dark
-
-      .stat
-        font-family: $attributefamily
-        font-size: 3em
-        color: $light
     #attributes
       display: flex
       flex-wrap: wrap
 
-      .attribute-label
-        line-height: 1.3em
-        border-bottom: 1px solid $dark
-        text-align: center
+      .attribute-container
+        width: 10vmax
+        height: 12vmax
+        border: 1px solid $dark
 
-      .eldritch-icon
-        font-size: 3em
-        cursor: pointer
+        .stamp-container
+          position: relative
+
+        &.lore
+          .stamp
+            top: -2px
+            left: 1vmax
+            transform: rotate(-3deg)
+
+          .stat
+            background-color: $purple
+          .eldritch-icon .inner-circle
+            border-color: $purple
+        &.strength
+          .stamp
+            top: -2px
+            left: 0.5vmax
+            transform: rotate(-2deg)
+
+          .stat
+            background-color: $red
+          .eldritch-icon .inner-circle
+            border-color: $red
+        &.observation
+          .stamp
+            top: -2px
+            left: 0.7vmax
+            transform: rotate(1deg)
+
+          .stat
+            background-color: $green
+          .eldritch-icon .inner-circle
+            border-color: $green
+        &.influence
+          .stamp
+            top: -2px
+            left: 1vmax
+            transform: rotate(-1deg)
+
+          .stat
+            background-color: $orange
+          .eldritch-icon .inner-circle
+            border-color: $orange
+        &.will
+          .stamp
+            top: -1px
+            left: 1vmax
+            transform: rotate(-1deg)
+
+          .stat
+            background-color: $blue
+          .eldritch-icon .inner-circle
+            border-color: $blue
+
+        .stamp
+          border: 0.4vmax solid $light
+          position: absolute
+          width: 8vmax
+          height: 10vmax
+          box-shadow: 1px 1px grey;
+
+          .inner-stamp
+            border: 0.5vmax solid
+            background: $light
+            height: 100%
+
+          .stat-container
+            position: absolute
+            bottom: 0%
+            right: 0%
+            width: 100%
+            height: 100%
+            overflow: hidden
+
+            .stat
+              position: absolute
+              right: -2%
+              bottom: -2%
+              font-family: $attributefamily
+              font-size: 3em
+              color: $light
+              display: inline-flex
+              align-items: center
+              justify-content: center
+              border-radius: 50%
+              min-width: 1em
+
+              &:before
+                content:''
+                float: left
+                width: auto
+                padding-bottom: 100%
+
+        .attribute-label
+          font-size: 0.8em
+          color: $colorText
+          line-height: 1.3em
+          border-bottom: 1px solid $dark
+          text-align: center
+
+        .eldritch-icon
+          position: relative
+          top: -0.6vmax
+          font-size: 2.5em
+          cursor: pointer
+          border: 3px solid $light
+          border-radius: 50%
+          width: 100%
+          height: 5vmax
+          background-color: $light
+
+          .inner-circle
+            display: inline-flex
+            align-items: center
+            justify-content: center
+            border-radius: 50%
+            border: 3px solid
+            width: 100%
+            height: 100%
+            span
+              padding-top: 0.3em
+
 
 .health, .strength
   color: $red

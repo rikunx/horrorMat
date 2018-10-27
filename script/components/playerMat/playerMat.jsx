@@ -7,7 +7,8 @@ import RollContainer from '../../containers/Roll/rollContainer';
 
 import { Attributes } from '../../enum';
 
-import NumberCircle from './indexCircle';
+import IndexCircle from './indexCircle';
+import AttributeCircle from './attributeCircle';
 
 const generateProfilePicPath = imageName => {
   if (imageName) return `../../../images/character_profiles/${imageName}`;
@@ -62,61 +63,102 @@ const PlayerMat = ({
         <div className="index-label">
           <div>PHYSIOLOGICAL INDEX</div>
         </div>
-        <div className="index-value">
-          <div className="health eldritch-icon">K</div>
-          <NumberCircle>{health}</NumberCircle>
-          <div className="stat health-stat">
-            <div className="inner-circle">
-              <span>{health}</span>
-            </div>
-          </div>
+        <div className="health index-value">
+          <div className="eldritch-icon">K</div>
+          <IndexCircle>{health}</IndexCircle>
         </div>
       </div>
       <div className="physiological-index">
         <div className="index-label">
           <div>PHYSIOLOGICAL INDEX</div>
         </div>
-        <div className="index-value">
-          <div className="sanity eldritch-icon">L</div>
-          <div className="stat sanity-stat">
-            <div className="inner-circle">
-              <span>{sanity}</span>
-            </div>
-          </div>
+        <div className="sanity index-value">
+          <div className="eldritch-icon">L</div>
+          <IndexCircle>{sanity}</IndexCircle>
         </div>
       </div>
     </div>
     <div id="stats-area">
       <div id="attributes">
-        <div className="attribute-container" onClick={() => promptRoll(Attributes.LORE)}>
+        <div className="attribute-container lore" onClick={() => promptRoll(Attributes.LORE)}>
           <div className="attribute-label">Lore</div>
-          <div className="lore eldritch-icon">A</div>
-          <div className="stat">{lore}</div>
-          <div className="improvement-stat">{improvements.lore}</div>
+          <div className="stamp-container">
+            <div className="stamp">
+              <div className="inner-stamp">
+                <div className="eldritch-icon">
+                  <div className="inner-circle">
+                    <span>A</span>
+                  </div>
+                </div>
+                <AttributeCircle>{lore}</AttributeCircle>
+                <div className="improvement-stat">{improvements.lore}</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="attribute-container" onClick={() => promptRoll(Attributes.INFLUENCE)}>
+        <div className="attribute-container influence" onClick={() => promptRoll(Attributes.INFLUENCE)}>
           <div className="attribute-label">Influence</div>
-          <div className="influence eldritch-icon">S</div>
-          <div className="stat">{influence}</div>
-          <div className="improvement-stat">{improvements.influence}</div>
+          <div className="stamp-container">
+            <div className="stamp">
+              <div className="inner-stamp">
+                <div className="eldritch-icon">
+                  <div className="inner-circle">
+                    <span>S</span>
+                  </div>
+                </div>
+                <AttributeCircle>{influence}</AttributeCircle>
+                <div className="improvement-stat">{improvements.influence}</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="attribute-container" onClick={() => promptRoll(Attributes.OBSERVATION)}>
+        <div className="attribute-container observation" onClick={() => promptRoll(Attributes.OBSERVATION)}>
           <div className="attribute-label">Observation</div>
-          <div className="observation eldritch-icon">D</div>
-          <div className="stat">{observation}</div>
-          <div className="improvement-stat">{improvements.observation}</div>
+          <div className="stamp-container">
+            <div className="stamp">
+              <div className="inner-stamp">
+                <div className="eldritch-icon">
+                  <div className="inner-circle">
+                    <span>D</span>
+                  </div>
+                </div>
+                <AttributeCircle>{observation}</AttributeCircle>
+                <div className="improvement-stat">{improvements.observation}</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="attribute-container" onClick={() => promptCombat(Attributes.STRENGTH)}>
+        <div className="attribute-container strength" onClick={() => promptCombat(Attributes.STRENGTH)}>
           <div className="attribute-label">Strength</div>
-          <div className="strength eldritch-icon">F</div>
-          <div className="stat">{strength}</div>
-          <div className="improvement-stat">{improvements.strength}</div>
+          <div className="stamp-container">
+            <div className="stamp">
+              <div className="inner-stamp">
+                <div className="eldritch-icon">
+                  <div className="inner-circle">
+                    <span>F</span>
+                  </div>
+                </div>
+                <AttributeCircle>{strength}</AttributeCircle>
+                <div className="improvement-stat">{improvements.strength}</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="attribute-container" onClick={() => promptCombat(Attributes.WILL)}>
+        <div className="attribute-container will" onClick={() => promptCombat(Attributes.WILL)}>
           <div className="attribute-label">Will</div>
-          <div className="will eldritch-icon">G</div>
-          <div className="stat">{will}</div>
-          <div className="improvement-stat">{improvements.will}</div>
+          <div className="stamp-container">
+            <div className="stamp">
+              <div className="inner-stamp">
+                <div className="eldritch-icon">
+                  <div className="inner-circle">
+                    <span>G</span>
+                  </div>
+                </div>
+                <AttributeCircle>{will}</AttributeCircle>
+                <div className="improvement-stat">{improvements.will}</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
