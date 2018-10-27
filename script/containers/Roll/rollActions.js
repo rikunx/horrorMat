@@ -1,29 +1,69 @@
 import * as actionTypes from './rollActionTypes';
 import * as toastActions from '../Toast/toastActions';
 
-import { Attributes } from '../../enum';
+import { Attributes, Situation } from '../../enum';
 
-export function roll(test) {
-  return (dispatch, getState) => {
-    const mat = getState().mat;
-    console.log(test, mat);
-    switch (test) {
-      case Attributes.STRENGTH:
-        dispatch({
-          type: actionTypes.Roll,
-          baseRoll: mat.strength + mat.improvements.strength,
-          clues: mat.clues,
-          abilities: mat.abilities,
-          inventory: mat.inventory
-        });
-        break;
-      // default:
-      //   dispatch({ type: actionTypes.Roll, baseRoll, clues, abilities, inventory });
-    }
+export function promptCombat(test) {
+  return {
+    type: actionTypes.PromptCombat,
+    test
   };
 }
 
-export function rolling(numOfDice) {
+export function closeCombatPrompt() {
+  return {
+    type: actionTypes.CloseCombatPrompt
+  };
+}
+
+function retrieveEligibleItems(items, test, isCombat) {
+  return items
+    .map(item => ({
+      ...item,
+      test: item.test.find(itemTest => {
+        if (isCombat) return itemTest.situation === Situation.COMBAT && itemTest.attribute === test;
+        return itemTest.situation !== Situation.COMBAT && itemTest.attribute === test;
+      })
+    }))
+    .filter(item => item.test);
+}
+function retrieveEligibleAbilities(abilities, test, isCombat) {
+  return abilities.filter(ability => {
+    if (isCombat) return ability.situation === Situation.COMBAT && ability.attribute === test;
+    return ability.situation === Situation.TEST && (ability.attribute === test || ability.attribute === Attributes.ANY);
+  });
+}
+
+export function promptRoll(test, isCombat = false) {
+  return (dispatch, getState) => {
+    const mat = getState().mat.character.get('character');
+
+    const baseRoll = mat[test] + mat.improvements[test];
+    const eligibleItems = retrieveEligibleItems(mat.inventory, test, isCombat);
+    const eligibleAbilities = retrieveEligibleAbilities(mat.abilities);
+
+    const itemBonus = eligibleItems.reduce((bonus, item) => bonus + item.test.bonus, 0);
+    const abilityBonus = eligibleAbilities.reduce((bonus, ability) => bonus + ability.bonus, 0);
+    dispatch({
+      type: actionTypes.PromptRoll,
+      test,
+      clues: mat.clues,
+      inventory: eligibleItems,
+      rerolls: mat.abilities.filter(ability => ability.situation === Situation.REROLL),
+      baseRoll,
+      abilities: eligibleAbilities,
+      total: baseRoll + itemBonus + abilityBonus
+    });
+  };
+}
+
+export function closeRollPrompt() {
+  return {
+    type: actionTypes.CloseRollPrompt
+  };
+}
+
+export function roll(numOfDice) {
   return async dispatch => {
     dispatch({ type: actionTypes.Rolling, numOfDice });
     try {

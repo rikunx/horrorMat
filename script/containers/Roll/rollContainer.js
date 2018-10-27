@@ -9,10 +9,19 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch, props) {
+function mapDispatchToProps(dispatch) {
   return {
-    roll() {
-      dispatch(actions.rolling(props.baseRoll));
+    closeCombatPrompt() {
+      dispatch(actions.closeCombatPrompt());
+    },
+    promptRoll(test, isCombat) {
+      dispatch(actions.promptRoll(test, isCombat));
+    },
+    closeRollPrompt() {
+      dispatch(actions.closeRollPrompt());
+    },
+    roll(numOfDice) {
+      dispatch(actions.roll(numOfDice));
     }
   };
 }

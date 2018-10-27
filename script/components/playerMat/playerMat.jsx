@@ -26,7 +26,8 @@ const PlayerMat = ({
   fullscreen,
   openFullscreen,
   closeFullscreen,
-  roll
+  promptRoll,
+  promptCombat
 }) => (
   <div id="player-mat">
     <Icon
@@ -66,31 +67,31 @@ const PlayerMat = ({
         </div>
       </div>
       <div id="attributes">
-        <div className="attribute-container">
+        <div className="attribute-container" onClick={() => promptRoll(Attributes.LORE)}>
           <div className="attribute-label">Lore</div>
           <div className="lore eldritch-icon">A</div>
           <div className="stat">{lore}</div>
           <div className="improvement-stat">{improvements.lore}</div>
         </div>
-        <div className="attribute-container">
+        <div className="attribute-container" onClick={() => promptRoll(Attributes.INFLUENCE)}>
           <div className="attribute-label">Influence</div>
           <div className="influence eldritch-icon">S</div>
           <div className="stat">{influence}</div>
           <div className="improvement-stat">{improvements.influence}</div>
         </div>
-        <div className="attribute-container">
+        <div className="attribute-container" onClick={() => promptRoll(Attributes.OBSERVATION)}>
           <div className="attribute-label">Observation</div>
           <div className="observation eldritch-icon">D</div>
           <div className="stat">{observation}</div>
           <div className="improvement-stat">{improvements.observation}</div>
         </div>
-        <div className="attribute-container" onClick={() => roll(Attributes.STRENGTH)}>
+        <div className="attribute-container" onClick={() => promptCombat(Attributes.STRENGTH)}>
           <div className="attribute-label">Strength</div>
           <div className="strength eldritch-icon">F</div>
           <div className="stat">{strength}</div>
           <div className="improvement-stat">{improvements.strength}</div>
         </div>
-        <div className="attribute-container">
+        <div className="attribute-container" onClick={() => promptCombat(Attributes.WILL)}>
           <div className="attribute-label">Will</div>
           <div className="will eldritch-icon">G</div>
           <div className="stat">{will}</div>
@@ -117,7 +118,8 @@ PlayerMat.propTypes = {
   fullscreen: PropTypes.bool.isRequired,
   openFullscreen: PropTypes.func.isRequired,
   closeFullscreen: PropTypes.func.isRequired,
-  roll: PropTypes.func.isRequired
+  promptRoll: PropTypes.func.isRequired,
+  promptCombat: PropTypes.func.isRequired
 };
 
 export default PlayerMat;

@@ -10,6 +10,9 @@ const defaultTheme = createMuiTheme({
     secondary: {
       main: indigo[100]
     }
+  },
+  typography: {
+    fontFamily: 'Special Elite'
   }
 });
 

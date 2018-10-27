@@ -31,10 +31,10 @@
           "description": "Must be an array and is required",
           "items": {
             "bsonType": "object",
-            "required": ["type", "bonus"],
+            "required": ["situation", "bonus"],
             "properties": {
-              "type": {
-                "enum": ["reroll"],
+              "situation": {
+                "enum": ["combat", "test", "attribute", "reroll"],
                 "description": "can only be one of the enum values and is required"
               },
               "cost": {
@@ -42,14 +42,18 @@
                 "required": ["type", "value"],
                 "properties": {
                   "type": {
-                    "enum": ["clue", "health", "sanity"],
+                    "enum": ["clue", "health", "sanity", "location"],
                     "description": "can only be one of the enum values and is required"
                   },
                   "value": {
-                    "bsonType": "int",
-                    "description": "must be an int and is required"
+                    "bsonType": ["int", "string"],
+                    "description": "must be an int or string and is required"
                   }
                 }
+              },
+              "attribute": {
+                "enum": ["strength", "will", "lore", "influence", "observation", "any"],
+                "description": "can only be one of the enum values and is required"
               },
               "bonus": {
                 "bsonType": "int",

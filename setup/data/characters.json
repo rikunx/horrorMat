@@ -27,11 +27,12 @@
     "occupation": "The Spy",
     "abilities": [
       {
-        "type": "reroll",
+        "situation": "reroll",
         "cost": {
           "type": "clue",
           "value": 1
         },
+        "attribute": "any",
         "bonus": 1
       }
     ],

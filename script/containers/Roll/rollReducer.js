@@ -3,27 +3,54 @@ import * as actions from './rollActionTypes';
 import { RollPhases } from '../../enum/index';
 
 const defaultState = {
+  combatDialogOpen: false,
+  rollDialogOpen: false,
+  test: '',
   baseRoll: 0,
   clues: 0,
   abilities: [],
+  excludedAbilities: [],
   inventory: [],
+  excludedItems: [],
   cluesToSpend: 0,
-  phase: 'none',
-  results: []
+  results: [],
+  total: 0,
+  phase: 'none'
 };
 
 function rollReducer(state = defaultState, action) {
   switch (action.type) {
-    case actions.Roll:
+    case actions.PromptCombat:
       return {
         ...state,
+        combatDialogOpen: true,
+        test: action.test
+      };
+    case actions.CloseCombatPrompt:
+      return {
+        ...state,
+        combatDialogOpen: false,
+        test: ''
+      };
+    case actions.PromptRoll:
+      return {
+        ...state,
+        combatDialogOpen: false,
+        rollDialogOpen: true,
+        test: action.test,
         baseRoll: action.baseRoll,
         clues: action.clues,
         abilities: action.abilities,
         inventory: action.inventory,
         cluesToSpend: action.clues,
+        total: action.total,
         phase: RollPhases.Roll,
         results: []
+      };
+    case actions.CloseRollPrompt:
+      return {
+        ...state,
+        rollDialogOpen: false
       };
     case actions.Rolling:
       return {

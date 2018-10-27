@@ -30,11 +30,11 @@
             "type": "object",
             "properties": {
               "situation": {
-                "enum": ["combat", "test", "any"],
+                "enum": ["combat", "test", "reroll"],
                 "description": "can only be one of the enum values and is required"
               },
               "attribute": {
-                "enum": ["strength", "will", "lore", "influence", "observation", "roll", "reroll"],
+                "enum": ["strength", "will", "lore", "influence", "observation", "any"],
                 "description": "can only be one of the enum values and is required"
               },
               "bonus": {

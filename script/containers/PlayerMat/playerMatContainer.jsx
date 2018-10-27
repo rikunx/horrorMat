@@ -45,8 +45,11 @@ function mapDispatchToProps(dispatch) {
     closeFullscreen() {
       dispatch(appActions.closeFullScreen());
     },
-    roll(test) {
-      dispatch(rollActions.roll(test));
+    promptCombat(test) {
+      dispatch(rollActions.promptCombat(test));
+    },
+    promptRoll(test) {
+      dispatch(rollActions.promptRoll(test));
     }
   };
 }

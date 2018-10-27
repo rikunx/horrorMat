@@ -23,8 +23,8 @@
     "type": "trinket",
     "test": [
       {
-        "situation": "any",
-        "attribute": "roll",
+        "situation": "reroll",
+        "attribute": "any",
         "bonus": 1,
         "oneShot": true,
         "disposable": false
