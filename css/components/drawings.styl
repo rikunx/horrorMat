@@ -1,0 +1,95 @@
+#passport
+  background: $light url('../media/images/background1.jpg') repeat
+
+
+/* health / sanity circles */
+.index-value
+  .stat
+    position: absolute
+    font-size: 3em
+    border-radius: 50%
+    border: 1px solid
+    padding: 2px
+
+    .inner-circle
+      display: inline-flex
+      align-items: center
+      justify-content: center
+      min-width: 1em
+      border-radius: 50%
+      border: 3px solid
+      vertical-align: middle
+      box-sizing: content-box
+
+      &:before
+        content:''
+        float: left
+        width: auto
+        padding-bottom: 100%
+
+      span
+        padding-top: 0.3em
+
+/* stamp */
+.stamp
+  border: 0.4vmax solid $light
+  position: absolute
+  width: 8vmax
+  height: 10vmax
+  box-shadow: 1px 1px grey;
+
+  .inner-stamp
+    border: 0.5vmax solid
+    background: $light
+    height: 100%
+
+  .stat-container
+    position: absolute
+    bottom: 0%
+    right: 0%
+    width: 100%
+    height: 100%
+    overflow: hidden
+
+    .stat
+      position: absolute
+      right: -2%
+      bottom: -2%
+      font-family: $attributefamily
+      font-size: 3em
+      color: $light
+      display: inline-flex
+      align-items: center
+      justify-content: center
+      border-radius: 50%
+      min-width: 1em
+
+      &:before
+        content:''
+        float: left
+        width: auto
+        padding-bottom: 100%
+
+/* attribute circles */
+.eldritch-icon
+  position: absolute
+  left: 0
+  top: -0.6vmax
+  font-size: 2.5em
+  cursor: pointer
+  border: 3px solid $light
+  border-radius: 50%
+  width: 100%
+  height: 5vmax
+  background-color: $light
+
+  .inner-circle
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    border-radius: 50%
+    border: 3px solid
+    width: 100%
+    height: 100%
+    span
+      padding-top: 0.3em
