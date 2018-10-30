@@ -1,12 +1,40 @@
 #passport
-  background: $light url('../media/images/background1.jpg') repeat
+  height: 100%
+
+  #cover
+    background-color: #710000
+    border-top-left-radius: 1rem
+    height: 100%
+    width: 100%
+    padding-top: 1rem
+    padding-left: 1rem
+    box-shadow: -2px 0px 2px #9a9a9a8c, 0px -2px 2px #9a9a9a8c;
+
+  #page1
+    background: $light url('../media/images/background1.jpg') repeat
+    border-left: 2px solid $dark;
+    border-top: 2px solid $dark;
+    border-top-left-radius: 2px
+    height: 100%
+
+    .page
+      background: $light url('../media/images/background1.jpg') repeat
+      margin: 1px 0 0 1px
+      border-left: 1px solid $dark;
+      border-top: 1px solid $dark;
+      border-top-left-radius: 2px
+      height: 100%
+
+      &.open
+        padding: 1rem
+
 
 
 /* health / sanity circles */
 .index-value
   .stat
     position: absolute
-    font-size: 3em
+    font-size: 3rem
     border-radius: 50%
     border: 1px solid
     padding: 2px
@@ -31,65 +59,68 @@
         padding-top: 0.3em
 
 /* stamp */
-.stamp
-  border: 0.4vmax solid $light
-  position: absolute
-  width: 8vmax
-  height: 10vmax
-  box-shadow: 1px 1px grey;
-
-  .inner-stamp
-    border: 0.5vmax solid
-    background: $light
-    height: 100%
-
-  .stat-container
+.stamp-container
+  width: 100%
+  height: 100%
+  .stamp
+    border: 0.4vmax solid $light
     position: absolute
-    bottom: 0%
-    right: 0%
-    width: 100%
-    height: 100%
-    overflow: hidden
+    width: 90%
+    height: 90%
+    box-shadow: 1px 1px grey;
 
-    .stat
+    .inner-stamp
+      border: 0.5vmax solid
+      background: $light
+      height: 100%
+
+    .stat-container
       position: absolute
-      right: -2%
-      bottom: -2%
-      font-family: $attributefamily
-      font-size: 3em
-      color: $light
+      bottom: 0%
+      right: 0%
+      width: 100%
+      height: 100%
+      overflow: hidden
+
+      .stat
+        position: absolute
+        right: -2%
+        bottom: -2%
+        font-family: $attributefamily
+        font-size: 3em
+        color: $light
+        display: inline-flex
+        align-items: center
+        justify-content: center
+        border-radius: 50%
+        min-width: 1em
+
+        &:before
+          content:''
+          float: left
+          width: auto
+          padding-bottom: 100%
+
+  /* attribute circles */
+  .eldritch-icon
+    position: absolute
+    left: 0
+    top: -0.6vmax
+    font-size: 2.5em
+    cursor: pointer
+    border: 3px solid $light
+    border-radius: 50%
+    width: 100%
+    height: 5vmax
+    background-color: $light
+
+    .inner-circle
       display: inline-flex
       align-items: center
       justify-content: center
       border-radius: 50%
-      min-width: 1em
-
-      &:before
-        content:''
-        float: left
-        width: auto
-        padding-bottom: 100%
-
-/* attribute circles */
-.eldritch-icon
-  position: absolute
-  left: 0
-  top: -0.6vmax
-  font-size: 2.5em
-  cursor: pointer
-  border: 3px solid $light
-  border-radius: 50%
-  width: 100%
-  height: 5vmax
-  background-color: $light
-
-  .inner-circle
-    display: inline-flex
-    align-items: center
-    justify-content: center
-    border-radius: 50%
-    border: 3px solid
-    width: 100%
-    height: 100%
-    span
-      padding-top: 0.3em
+      border: 3px solid
+      width: 100%
+      height: 100%
+      span
+        padding-top: 0.3em

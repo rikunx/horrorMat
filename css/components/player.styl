@@ -1,11 +1,9 @@
 json('../media-queries.json')
 
 #player-mat
-  background: $white url('../media/images/grunge_paper2.jpg') top center
-  background-size: cover
   height: 100%
   margin: 0
-  padding: 2vmax
+  padding: 1.2rem 0 0 1.2rem
 
   #profile
     width: 100%
@@ -16,8 +14,8 @@ json('../media-queries.json')
       display: inline-block
       position: relative
       border: 1px solid $dark
-      width: 20vmax
-      height: 20vmax
+      width: 15rem
+      height: 15rem
 
       #profile-pic
         display: inline-block
@@ -59,7 +57,7 @@ json('../media-queries.json')
 
   #physiological-index-area
     display: inline-block
-    position: absolute
+    // position: absolute
 
     .physiological-index
       display: inline-block
@@ -111,13 +109,47 @@ json('../media-queries.json')
           transform: rotate(10deg)
 
   #stats-area
-    display: flex
+    position: absolute
+    width: fit-content
+    height: fit-content
+
+    @media small
+      top: 4em
+      right: 0
+    @media mobile
+      top: 4em
+      right: 0
+
+    @media tablet
+      bottom: 0
+      left: 1em
+    @media sd-monitor
+      bottom: 0
+      left: 1em
+    @media hd-monitor
+      bottom: 0
+      left: 1em
 
     #attributes
       display: flex
-      flex-wrap: wrap
+      background: url(../media/images/grunge_paper.jpg) no-repeat center center
+      padding: 1em
+
+      @media small
+        flex-flow: column
+
+      @media mobile
+        flex-flow: column
+
+      @media tablet
+        flex-flow: row
+      @media sd-monitor
+        flex-flow: row
+      @media hd-monitor
+        flex-flow: row
 
       .attribute-container
+        display: inline-block
         width: 10vmax
         height: 12vmax
         border: 1px solid $dark
@@ -126,9 +158,9 @@ json('../media-queries.json')
           position: relative
 
         &.lore
-          .stamp
+          .stamp-container
             top: -2px
-            left: 1vmax
+            left: 9%
             transform: rotate(-3deg)
 
           .stat
@@ -136,9 +168,9 @@ json('../media-queries.json')
           .eldritch-icon .inner-circle
             border-color: $purple
         &.strength
-          .stamp
+          .stamp-container
             top: -2px
-            left: 0.5vmax
+            left: 9%
             transform: rotate(-2deg)
 
           .stat
@@ -146,9 +178,9 @@ json('../media-queries.json')
           .eldritch-icon .inner-circle
             border-color: $red
         &.observation
-          .stamp
+          .stamp-container
             top: -2px
-            left: 0.7vmax
+            left: 6.5%
             transform: rotate(1deg)
 
           .stat
@@ -156,9 +188,9 @@ json('../media-queries.json')
           .eldritch-icon .inner-circle
             border-color: $green
         &.influence
-          .stamp
+          .stamp-container
             top: -2px
-            left: 1vmax
+            left: 9%
             transform: rotate(-1deg)
 
           .stat
@@ -166,9 +198,9 @@ json('../media-queries.json')
           .eldritch-icon .inner-circle
             border-color: $orange
         &.will
-          .stamp
+          .stamp-container
             top: -1px
-            left: 1vmax
+            left: 9%
             transform: rotate(-1deg)
 
           .stat
