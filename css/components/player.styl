@@ -6,6 +6,7 @@ json('../media-queries.json')
   padding: 1.2rem 0 0 1.2rem
 
   #profile
+    position: relative
     width: 100%
     display: flex
     justify-content: space-between
@@ -55,9 +56,43 @@ json('../media-queries.json')
         border-color: $dark
         margin: 0
 
+  #actions
+    padding: 0 1rem 1rem 1rem
+
+    .label
+      font-size: .8em
+      line-height: 1em
+      color: $dark
+
+    hr
+      border-style: solid
+      border-color: $dark
+      margin: 0
+
+
   #physiological-index-area
-    display: inline-block
-    // position: absolute
+    display: inline-table
+    border: 1px solid $dark
+    padding: 1rem
+
+    @media small
+      position: absolute
+      top: 16rem
+      left: 0
+    @media mobile
+      position: absolute
+      top: 16rem
+      left: 0
+
+    @media tablet
+      bottom: 0
+      left: 1em
+    @media sd-monitor
+      bottom: 0
+      left: 1em
+    @media hd-monitor
+      bottom: 0
+      left: 1em
 
     .physiological-index
       display: inline-block
@@ -112,22 +147,21 @@ json('../media-queries.json')
     position: absolute
     width: fit-content
     height: fit-content
+    transform: rotate(-1deg)
 
     @media small
-      top: 4em
-      right: 0
+      right: -2px
     @media mobile
-      top: 4em
-      right: 0
+      right: -2px
 
     @media tablet
-      bottom: 0
+      bottom: 1em
       left: 1em
     @media sd-monitor
-      bottom: 0
+      bottom: 1em
       left: 1em
     @media hd-monitor
-      bottom: 0
+      bottom: 1em
       left: 1em
 
     #attributes

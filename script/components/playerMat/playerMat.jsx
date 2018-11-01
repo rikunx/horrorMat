@@ -58,20 +58,26 @@ const PlayerMat = ({
           <div className="profile-label">OCCUPATION</div>
           <hr />
           <div id="player-occupation">{occupation}</div>
-        </div>
-      </div>
-      <div id="physiological-index-area">
-        <div className="physiological-index">
-          <div className="index-label">
-            <div>PHYSIOLOGICAL INDEX</div>
+          <div id="physiological-index-area">
+            <div className="physiological-index">
+              <div className="index-label">
+                <div>PHYSIOLOGICAL INDEX</div>
+              </div>
+              <PhysiologicalIndex letter="K" type="health" value={health} />
+            </div>
+            <div className="physiological-index">
+              <div className="index-label">
+                <div>PHYSIOLOGICAL INDEX</div>
+              </div>
+              <PhysiologicalIndex letter="L" type="sanity" value={sanity} />
+            </div>
           </div>
-          <PhysiologicalIndex letter="K" type="health" value={health} />
         </div>
-        <div className="physiological-index">
-          <div className="index-label">
-            <div>PHYSIOLOGICAL INDEX</div>
-          </div>
-          <PhysiologicalIndex letter="L" type="sanity" value={sanity} />
+        <div id="actions">
+          <div className="label">Actions</div>
+          <hr />
+          <div>Regular Roll</div>
+          <div>Ability Action</div>
         </div>
       </div>
       <div id="stats-area">

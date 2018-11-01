@@ -3,6 +3,6 @@
   "mobile": "screen and (min-width: 481px) and (max-width: 520px)",
   "mobile-long": "screen and (min-width: 481px) and (max-width: 520px) and (min-height: 700px)",
   "tablet": "screen and (min-width: 521px) and (max-width: 800px)",
-  "sd-monitor": "screen and (min-width: 801px) and (max-width: 1280px)",
-  "hd-monitor": "screen and (min-width:1281px)"
+  "sd-monitor": "screen and (min-width: 801px) and (max-width: 1280px) and (orientation: portrait)",
+  "hd-monitor": "screen and (min-width:1281px) and (orientation: portrait)"
 }
