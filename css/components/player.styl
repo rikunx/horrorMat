@@ -11,25 +11,36 @@ json('../media-queries.json')
     display: flex
     justify-content: space-between
 
-    #profile-placeholder
+    @media portrait-layout
+      width: 75%
+      flex-flow: column
+
+    @media landscape-layout
+      flex-flow: row
+
+    #profile-pic-content
       display: inline-block
       position: relative
-      border: 1px solid $dark
-      width: 15rem
-      height: 15rem
+      text-align: center
 
-      #profile-pic
+      #profile-placeholder
         display: inline-block
-        margin-left: 5px
-        width: 95%
-        height: auto
-        border: 5px solid $white
-        box-shadow: 1px 1px grey;
-        transform: rotate(-3deg)
+        position: relative
+        border: 1px solid $dark
+        padding: 0.3em
 
-        img
-          display: block
-          width: 100%
+        @media portrait-layout
+          flex-flow: column
+
+        #profile-pic
+          height: auto
+          border: 5px solid $white
+          box-shadow: 1px 1px grey;
+          transform: rotate(-3deg)
+
+          img
+            display: block
+            width: 100%
 
     #profile-info
       flex-grow: 1
@@ -57,6 +68,7 @@ json('../media-queries.json')
         margin: 0
 
   #actions
+    flex-grow: 1
     padding: 0 1rem 1rem 1rem
 
     .label
@@ -74,25 +86,6 @@ json('../media-queries.json')
     display: inline-table
     border: 1px solid $dark
     padding: 1rem
-
-    @media small
-      position: absolute
-      top: 16rem
-      left: 0
-    @media mobile
-      position: absolute
-      top: 16rem
-      left: 0
-
-    @media tablet
-      bottom: 0
-      left: 1em
-    @media sd-monitor
-      bottom: 0
-      left: 1em
-    @media hd-monitor
-      bottom: 0
-      left: 1em
 
     .physiological-index
       display: inline-block
@@ -149,37 +142,35 @@ json('../media-queries.json')
     height: fit-content
     transform: rotate(-1deg)
 
-    @media small
+    @media portrait-layout
       right: -2px
-    @media mobile
-      right: -2px
+      top: 1em
 
-    @media tablet
-      bottom: 1em
-      left: 1em
-    @media sd-monitor
-      bottom: 1em
-      left: 1em
-    @media hd-monitor
-      bottom: 1em
-      left: 1em
+    @media landscape-layout
+      bottom: 0
+    // @media small
+    //   right: -2px
+    // @media mobile
+    //   right: -2px
+
+    // @media tablet
+    //   bottom: 1em
+    //   left: 1em
+    // @media sd-monitor
+    //   bottom: 1em
+    //   left: 1em
+    // @media hd-monitor
+    //   bottom: 1em
+    //   left: 1em
 
     #attributes
       display: flex
       background: url(../media/images/grunge_paper.jpg) no-repeat center center
-      padding: 1em
 
-      @media small
+      @media portrait-layout
         flex-flow: column
 
-      @media mobile
-        flex-flow: column
-
-      @media tablet
-        flex-flow: row
-      @media sd-monitor
-        flex-flow: row
-      @media hd-monitor
+      @media landscape-layout
         flex-flow: row
 
       .attribute-container
@@ -187,6 +178,13 @@ json('../media-queries.json')
         width: 10vmax
         height: 12vmax
         border: 1px solid $dark
+
+        @media portrait-layout
+          margin: 0.5em 1em
+
+        @media landscape-layout
+          margin: 1em 0.5em
+
 
         .stamp-container
           position: relative
@@ -250,7 +248,19 @@ json('../media-queries.json')
           text-align: center
           padding-top: 0.3em
 
+      .attribute-container:first-child
+        @media portrait-layout
+          margin: 1em 1em 0.5em 1em
 
+        @media landscape-layout
+          margin: 1em 0.5em 1em 1em
+
+      .attribute-container:last-child
+        @media portrait-layout
+          margin: 0.5em 1em 1em 1em
+
+        @media landscape-layout
+          margin: 1em 1em 0.5em 1em
 
 .health, .strength
   color: $red

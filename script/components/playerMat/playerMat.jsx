@@ -46,9 +46,11 @@ const PlayerMat = ({
         {!fullscreen ? 'fullscreen' : 'fullscreen_exit'}
       </Icon>
       <div id="profile">
-        <div id="profile-placeholder">
-          <div id="profile-pic">
-            <img src={generateProfilePicPath(image)} />
+        <div id="profile-pic-content">
+          <div id="profile-placeholder">
+            <div id="profile-pic">
+              <img src={generateProfilePicPath(image)} />
+            </div>
           </div>
         </div>
         <div id="profile-info">
