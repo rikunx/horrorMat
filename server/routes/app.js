@@ -11,9 +11,9 @@ function appRoutes(db) {
         {
           $lookup: {
             from: 'inventory',
-            localField: 'inventory',
+            localField: 'inventory.items',
             foreignField: 'name',
-            as: 'inventory'
+            as: 'inventory.items'
           }
         }
       ])
@@ -51,8 +51,8 @@ function appRoutes(db) {
 
   router.post('/session', async (req, res) => {
     const sessions = await db.collection('sessions');
-    const newSession = await sessions.insert({});
-    res.json(newSession);
+    const newSession = await sessions.insertOne({});
+    res.json({ insertedId: newSession.insertedId });
   });
 
   router.get('/session/:sessionId', async (req, res) => {

@@ -6,21 +6,14 @@
     "image": "Lily_Chen.jpg",
     "baseHealth": 6,
     "baseSanity": 6,
-    "health": 6,
-    "sanity": 6,
-    "lore": 2,
-    "influence": 3,
-    "observation": 4,
-    "strength": 3,
-    "will": 2,
-    "improvements": {
-      "lore": 0,
-      "influence": 0,
-      "observation": 0,
-      "strength": 0,
-      "will": 0
-    },
-    "inventory": ["Protective Amulet", "Lucky Rabbit's Foot"]
+    "baseLore": 2,
+    "baseInfluence": 3,
+    "baseObservation": 4,
+    "baseStrength": 3,
+    "baseWill": 2,
+    "inventory": {
+      "items": ["Protective Amulet", "Lucky Rabbit's Foot"]
+    }
   },
   {
     "name": "Trish Scarborough",
@@ -39,20 +32,29 @@
     "image": "Trish_Scarborough.jpg",
     "baseHealth": 7,
     "baseSanity": 5,
-    "health": 7,
-    "sanity": 5,
-    "lore": 1,
-    "influence": 3,
-    "observation": 4,
-    "strength": 3,
-    "will": 2,
-    "improvements": {
-      "lore": 0,
-      "influence": 0,
-      "observation": 0,
-      "strength": 0,
-      "will": 0
-    },
-    "inventory": [".45 Automatic"]
+    "baseLore": 1,
+    "baseInfluence": 3,
+    "baseObservation": 4,
+    "baseStrength": 3,
+    "baseWill": 2,
+    "inventory": {
+      "items": [".45 Automatic"]
+    }
+  },
+  {
+    "name": "Akachi Onyele",
+    "occupation": "The Shaman",
+    "abilities": [],
+    "image": "Akachi_Onyele.jpg",
+    "baseHealth": 5,
+    "baseSanity": 7,
+    "baseLore": 3,
+    "baseInfluence": 2,
+    "baseObservation": 2,
+    "baseStrength": 2,
+    "baseWill": 4,
+    "inventory": {
+      "clues": 1
+    }
   }
 ]

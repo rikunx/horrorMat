@@ -34,7 +34,7 @@ export function createSession(props) {
     try {
       const response = await fetch('/session', { method: 'post' });
       const session = await response.json();
-      const sessionId = session.insertedIds[0];
+      const sessionId = session.insertedId;
       dispatch({
         type: actionTypes.CreatedSession,
         sessionId

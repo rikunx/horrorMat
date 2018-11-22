@@ -1,10 +1,7 @@
 {
-  "small": "screen and (min-width: 320px) and (max-width: 480px)",
-  "mobile": "screen and (min-width: 481px) and (max-width: 520px)",
-  "mobile-long": "screen and (min-width: 481px) and (max-width: 520px) and (min-height: 700px)",
-  "tablet": "screen and (min-width: 521px) and (max-width: 800px)",
-  "sd-monitor": "screen and (min-width: 801px) and (max-width: 1280px) and (orientation: portrait)",
-  "hd-monitor": "screen and (min-width:1281px) and (orientation: portrait)",
+  "retina-screen-2": "screen and (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-device-pixel-ratio: 2)",
+  "retina-screen-3": "screen and (-webkit-min-device-pixel-ratio: 3), (min--moz-device-pixel-ratio: 3), (-o-min-device-pixel-ratio: 3/1), (min-device-pixel-ratio: 3)",
+  "retina-screen-4": "screen and (-webkit-min-device-pixel-ratio: 4), (min--moz-device-pixel-ratio: 4), (-o-min-device-pixel-ratio: 4/1), (min-device-pixel-ratio: 4)",
   "portrait-layout": "screen and (orientation: portrait)",
   "landscape-layout": "screen and (orientation: landscape)"
 }

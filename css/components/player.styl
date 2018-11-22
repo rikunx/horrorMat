@@ -52,11 +52,14 @@ json('../media-queries.json')
         line-height: 1em
         color: $dark
 
+        @media portrait-layout
+          margin-top: 1em
+
       #player-name
         line-height: 2em
         font-size: 1.5em
         font-weight: bold
-        margin-bottom: 1em
+        // margin-bottom: 1em
 
       #player-occupation
         line-height: 2em
@@ -75,6 +78,10 @@ json('../media-queries.json')
       font-size: .8em
       line-height: 1em
       color: $dark
+      text-align: center
+
+      @media portrait-layout
+        margin-top: 1em
 
     hr
       border-style: solid
@@ -83,9 +90,9 @@ json('../media-queries.json')
 
 
   #physiological-index-area
-    display: inline-table
+    display: inline-flex
     border: 1px solid $dark
-    padding: 1rem
+    padding: 0.5rem
 
     .physiological-index
       display: inline-block
@@ -148,20 +155,6 @@ json('../media-queries.json')
 
     @media landscape-layout
       bottom: 0
-    // @media small
-    //   right: -2px
-    // @media mobile
-    //   right: -2px
-
-    // @media tablet
-    //   bottom: 1em
-    //   left: 1em
-    // @media sd-monitor
-    //   bottom: 1em
-    //   left: 1em
-    // @media hd-monitor
-    //   bottom: 1em
-    //   left: 1em
 
     #attributes
       display: flex
@@ -260,7 +253,7 @@ json('../media-queries.json')
           margin: 0.5em 1em 1em 1em
 
         @media landscape-layout
-          margin: 1em 1em 0.5em 1em
+          margin: 1em 1em 1em 0.5em
 
 .health, .strength
   color: $red

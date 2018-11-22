@@ -36,6 +36,17 @@ export function chooseCharacter(characterId, props) {
     // base character data
     if (session[characterId] == null) {
       dispatch(appActions.showSpinner());
+      Object.assign(character, {
+        health: character.baseHealth,
+        sanity: character.baseSanity,
+        improvements: {
+          lore: 0,
+          influence: 0,
+          observation: 0,
+          strength: 0,
+          will: 0
+        }
+      });
       try {
         const response = await fetch(`/session/${sessionId}`, {
           method: 'PUT',

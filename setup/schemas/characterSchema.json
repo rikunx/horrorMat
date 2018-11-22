@@ -9,12 +9,11 @@
         "abilities",
         "baseHealth",
         "baseSanity",
-        "lore",
-        "influence",
-        "observation",
-        "strength",
-        "will",
-        "improvements",
+        "baseLore",
+        "baseInfluence",
+        "baseObservation",
+        "baseStrength",
+        "baseWill",
         "inventory"
       ],
       "properties": {
@@ -74,73 +73,42 @@
           "bsonType": "int",
           "description": "must be an int and is required"
         },
-        "health": {
+        "baseLore": {
           "bsonType": "int",
           "description": "must be an int and is required"
         },
-        "sanity": {
+        "baseInfluence": {
           "bsonType": "int",
           "description": "must be an int and is required"
         },
-        "lore": {
+        "baseObservation": {
           "bsonType": "int",
           "description": "must be an int and is required"
         },
-        "influence": {
+        "baseStrength": {
           "bsonType": "int",
           "description": "must be an int and is required"
         },
-        "observation": {
+        "baseWill": {
           "bsonType": "int",
           "description": "must be an int and is required"
         },
-        "strength": {
-          "bsonType": "int",
-          "description": "must be an int and is required"
-        },
-        "will": {
-          "bsonType": "int",
-          "description": "must be an int and is required"
-        },
-        "improvements": {
+        "inventory": {
           "bsonType": "object",
-          "required": ["lore", "influence", "observation", "strength", "will"],
           "properties": {
-            "lore": {
-              "bsonType": "int",
-              "minimum": 0,
-              "maximum": 2,
-              "description": "must be an int and is required"
+            "items": {
+              "bsonType": "array",
+              "description": "must be an array and is required"
             },
-            "influence": {
-              "bsonType": "int",
-              "minimum": 0,
-              "maximum": 2,
-              "description": "must be an int and is required"
+            "allies": {
+              "bsonType": "array",
+              "description": "must be an array and is required"
             },
-            "observation": {
+            "clues": {
               "bsonType": "int",
-              "minimum": 0,
-              "maximum": 2,
-              "description": "must be an int and is required"
-            },
-            "strength": {
-              "bsonType": "int",
-              "minimum": 0,
-              "maximum": 2,
-              "description": "must be an int and is required"
-            },
-            "will": {
-              "bsonType": "int",
-              "minimum": 0,
-              "maximum": 2,
               "description": "must be an int and is required"
             }
           }
-        },
-        "inventory": {
-          "bsonType": "array",
-          "description": "must be an array and is required"
         }
       }
     }
