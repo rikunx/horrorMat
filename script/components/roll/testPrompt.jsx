@@ -12,23 +12,13 @@ import Slide from '@material-ui/core/Slide';
 function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
-const TestPrompt = ({
-  classes,
-  rollDialogOpen,
-  test,
-  baseRoll,
-  abilities,
-  inventory,
-  total,
-  closeRollPrompt,
-  roll
-}) => (
+const TestPrompt = ({ classes, rollDialogOpen, test, baseRoll, abilities, items, total, closePrompt, roll }) => (
   <Dialog
     classes={{ paper: classes.paper }}
     open={rollDialogOpen}
     TransitionComponent={Transition}
     keepMounted
-    onClose={closeRollPrompt}
+    onClose={closePrompt}
     aria-labelledby="alert-dialog-slide-title"
     aria-describedby="alert-dialog-slide-description"
   >
@@ -44,7 +34,7 @@ const TestPrompt = ({
         {abilities.map((ability, index) => (
           <span key={index}>Ability: +{ability.bonus}</span>
         ))}
-        {inventory.map(item => (
+        {items.map(item => (
           <span key={item._id}>
             {item.name}: +{item.test.bonus}
           </span>
@@ -52,7 +42,7 @@ const TestPrompt = ({
       </DialogContentText>
     </DialogContent>
     <DialogActions>
-      <Button onClick={closeRollPrompt} color="primary">
+      <Button onClick={closePrompt} color="primary">
         Cancel
       </Button>
       <Button onClick={() => roll(total)} color="primary">

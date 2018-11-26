@@ -1,3 +1,7 @@
+export const None = 'none';
+export const Combat = 'combat';
+export const Ability = 'ability';
+export const Items = 'items';
 export const Roll = 'roll';
 export const Rolling = 'rolling';
 export const Rolled = 'rolled';

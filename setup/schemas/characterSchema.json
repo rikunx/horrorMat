@@ -9,28 +9,28 @@
         "abilities",
         "baseHealth",
         "baseSanity",
-        "baseLore",
-        "baseInfluence",
-        "baseObservation",
-        "baseStrength",
-        "baseWill",
+        "lore",
+        "influence",
+        "observation",
+        "strength",
+        "will",
         "inventory"
       ],
       "properties": {
         "name": {
           "bsonType": "string",
-          "description": "must be a string and is required"
+          "description": "the name of the character"
         },
         "occupation": {
           "bsonType": "string",
-          "description": "must be a string and is required"
+          "description": "the character's occupation"
         },
         "abilities": {
           "bsonType": "array",
-          "description": "Must be an array and is required",
+          "description": "abilities that contribute to number of dice rolled",
           "items": {
             "bsonType": "object",
-            "required": ["situation", "bonus"],
+            "required": ["situation", "attribute", "bonus"],
             "properties": {
               "situation": {
                 "enum": ["combat", "test", "attribute", "reroll"],
@@ -38,6 +38,7 @@
               },
               "cost": {
                 "bsonType": "object",
+                "description": "the cost for using the ability",
                 "required": ["type", "value"],
                 "properties": {
                   "type": {
@@ -56,7 +57,11 @@
               },
               "bonus": {
                 "bsonType": "int",
-                "description": "must be an int and is required"
+                "description": "how many extra rolls result from this ability"
+              },
+              "oncePerRound": {
+                "type": "boolean",
+                "description": "must be a boolean and is required"
               }
             }
           }
@@ -73,23 +78,23 @@
           "bsonType": "int",
           "description": "must be an int and is required"
         },
-        "baseLore": {
+        "lore": {
           "bsonType": "int",
           "description": "must be an int and is required"
         },
-        "baseInfluence": {
+        "influence": {
           "bsonType": "int",
           "description": "must be an int and is required"
         },
-        "baseObservation": {
+        "observation": {
           "bsonType": "int",
           "description": "must be an int and is required"
         },
-        "baseStrength": {
+        "strength": {
           "bsonType": "int",
           "description": "must be an int and is required"
         },
-        "baseWill": {
+        "will": {
           "bsonType": "int",
           "description": "must be an int and is required"
         },
@@ -97,10 +102,6 @@
           "bsonType": "object",
           "properties": {
             "items": {
-              "bsonType": "array",
-              "description": "must be an array and is required"
-            },
-            "allies": {
               "bsonType": "array",
               "description": "must be an array and is required"
             },

@@ -6,6 +6,8 @@ import Icon from '@material-ui/core/Icon';
 
 import CombatPrompt from './combatPrompt';
 import TestPrompt from './testPrompt';
+import AbilityPrompt from './abilityPrompt';
+import * as phases from '../../enum/rollPhases';
 
 const styles = {
   paper: {
@@ -15,40 +17,81 @@ const styles = {
 };
 const Roll = ({
   classes,
-  combatDialogOpen,
-  rollDialogOpen,
   test,
   baseRoll,
   clues,
   abilities,
-  inventory,
+  eligibleAbilities,
+  eligibleAbilityIndex,
+  items,
+  eligibleItems,
+  eligibleItemIndex,
   total,
   phase,
   results,
-  promptRoll,
+  setCombat,
+  useAbility,
   closeRollPrompt,
-  closeCombatPrompt,
   roll
 }) => (
   <div id="roll-pad">
     <CombatPrompt
       classes={classes}
-      combatDialogOpen={combatDialogOpen}
+      combatDialogOpen={phase === phases.Combat}
       test={test}
-      promptRoll={promptRoll}
-      closeCombatPrompt={closeCombatPrompt}
+      setCombat={setCombat}
+      closePrompt={closeRollPrompt}
     />
-    <TestPrompt
-      classes={classes}
-      rollDialogOpen={rollDialogOpen}
-      test={test}
-      baseRoll={baseRoll}
-      abilities={abilities}
-      inventory={inventory}
-      total={total}
-      closeRollPrompt={closeRollPrompt}
-      roll
-    />
+    {(() => {
+      if (phase === phases.Ability && eligibleAbilities.length) {
+        return (
+          <AbilityPrompt
+            classes={classes}
+            abilityDialogOpen={phase === phases.Ability}
+            test={test}
+            ability={eligibleAbilities[eligibleAbilityIndex]}
+            useAbility={useAbility}
+            closePrompt={closeRollPrompt}
+          />
+        );
+      }
+      return '';
+    })()}
+    {(() => {
+      {
+        /* if (eligibleItems.length) {
+        return (
+          <AbilityPrompt
+            classes={classes}
+            abilityDialogOpen={phase === Ability}
+            test={test}
+            ability={eligibleAbilities[eligibleAbilityIndex]}
+            useAbility={useAbility}
+            closePrompt={closeRollPrompt}
+          />
+        );
+      } */
+      }
+      return '';
+    })()}
+    {(() => {
+      if (phase === phases.Roll) {
+        return (
+          <TestPrompt
+            classes={classes}
+            rollDialogOpen={phase === phases.Roll}
+            test={test}
+            baseRoll={baseRoll}
+            abilities={abilities}
+            items={items}
+            total={total}
+            closePrompt={closeRollPrompt}
+            roll={roll}
+          />
+        );
+      }
+      return '';
+    })()}
   </div>
 );
 

@@ -11,14 +11,17 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    closeCombatPrompt() {
-      dispatch(actions.closeCombatPrompt());
-    },
-    promptRoll(test, isCombat) {
-      dispatch(actions.promptRoll(test, isCombat));
+    promptRoll(test) {
+      dispatch(actions.promptTest(test));
     },
     closeRollPrompt() {
       dispatch(actions.closeRollPrompt());
+    },
+    setCombat(isCombat) {
+      dispatch(actions.setCombat(isCombat));
+    },
+    useAbility(shouldUseAbility) {
+      dispatch(actions.useAbility(shouldUseAbility));
     },
     roll(numOfDice) {
       dispatch(actions.roll(numOfDice));

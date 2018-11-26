@@ -13,11 +13,13 @@ const CharacterList = ({ characters, chooseCharacter, createNewSession }) => (
     </div>
     <div className="container">
       <h1>Choose your character:</h1>
-      {characters.map(character => (
-        <div key={character._id}>
-          <a onClick={() => chooseCharacter(character._id)}>{character.name}</a>
-        </div>
-      ))}
+      <div className="list">
+        {characters.map(character => (
+          <p key={character._id}>
+            <a onClick={() => chooseCharacter(character._id)}>{character.name}</a>
+          </p>
+        ))}
+      </div>
     </div>
   </div>
 );

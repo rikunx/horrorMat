@@ -13,7 +13,7 @@
           "description": "must be a string and is required"
         },
         "card": {
-          "enum": ["asset", "artifact", "relic", "spell"],
+          "enum": ["asset", "ally", "artifact", "relic", "spell"],
           "description": "can only be one of the enum values and is required"
         },
         "category": {

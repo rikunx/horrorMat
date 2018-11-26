@@ -6,11 +6,11 @@
     "image": "Lily_Chen.jpg",
     "baseHealth": 6,
     "baseSanity": 6,
-    "baseLore": 2,
-    "baseInfluence": 3,
-    "baseObservation": 4,
-    "baseStrength": 3,
-    "baseWill": 2,
+    "lore": 2,
+    "influence": 3,
+    "observation": 4,
+    "strength": 3,
+    "will": 2,
     "inventory": {
       "items": ["Protective Amulet", "Lucky Rabbit's Foot"]
     }
@@ -26,17 +26,17 @@
           "value": 1
         },
         "attribute": "any",
-        "bonus": 1
+        "bonus": 2
       }
     ],
     "image": "Trish_Scarborough.jpg",
     "baseHealth": 7,
     "baseSanity": 5,
-    "baseLore": 1,
-    "baseInfluence": 3,
-    "baseObservation": 4,
-    "baseStrength": 3,
-    "baseWill": 2,
+    "lore": 1,
+    "influence": 3,
+    "observation": 4,
+    "strength": 3,
+    "will": 2,
     "inventory": {
       "items": [".45 Automatic"]
     }
@@ -48,13 +48,204 @@
     "image": "Akachi_Onyele.jpg",
     "baseHealth": 5,
     "baseSanity": 7,
-    "baseLore": 3,
-    "baseInfluence": 2,
-    "baseObservation": 2,
-    "baseStrength": 2,
-    "baseWill": 4,
+    "lore": 3,
+    "influence": 2,
+    "observation": 2,
+    "strength": 2,
+    "will": 4,
     "inventory": {
+      "items": ["Mists of Releh"],
       "clues": 1
+    }
+  },
+  {
+    "name": "Mark Harrigan",
+    "occupation": "The Soldier",
+    "abilities": [],
+    "image": "Mark_Harrigan.jpg",
+    "baseHealth": 8,
+    "baseSanity": 4,
+    "lore": 1,
+    "influence": 2,
+    "observation": 2,
+    "strength": 4,
+    "will": 4,
+    "inventory": {
+      "items": [".38 Revolver", "Kerosene"]
+    }
+  },
+  {
+    "name": "Jacqueline Fine",
+    "occupation": "The Psychic",
+    "abilities": [],
+    "image": "Jacqueline_Fine.jpg",
+    "baseHealth": 4,
+    "baseSanity": 8,
+    "lore": 4,
+    "influence": 2,
+    "observation": 3,
+    "strength": 1,
+    "will": 3,
+    "inventory": {
+      "items": ["Flesh Ward"],
+      "clues": 1
+    }
+  },
+  {
+    "name": "Charlie Kane",
+    "occupation": "The Politician",
+    "abilities": [],
+    "image": "Charlie_Kane.jpg",
+    "baseHealth": 4,
+    "baseSanity": 8,
+    "lore": 2,
+    "influence": 4,
+    "observation": 3,
+    "strength": 2,
+    "will": 2,
+    "inventory": {
+      "items": ["Personal Assistant"]
+    }
+  },
+  {
+    "name": "Diana Stanley",
+    "occupation": "The Redeemed Cultist",
+    "abilities": [],
+    "image": "Diana_Stanley.jpg",
+    "baseHealth": 7,
+    "baseSanity": 5,
+    "lore": 4,
+    "influence": 2,
+    "observation": 3,
+    "strength": 3,
+    "will": 1,
+    "inventory": {
+      "items": ["Arcane Manuscripts", "Wither"]
+    }
+  },
+  {
+    "name": "Jim Culver",
+    "occupation": "The Musician",
+    "abilities": [
+      {
+        "situation": "combat",
+        "attribute": "any",
+        "bonus": 1
+      }
+    ],
+    "image": "Jim_Culver.jpg",
+    "baseHealth": 7,
+    "baseSanity": 5,
+    "lore": 3,
+    "influence": 3,
+    "observation": 2,
+    "strength": 2,
+    "will": 3,
+    "inventory": {
+      "items": ["Shriveling"],
+      "clues": 1
+    }
+  },
+  {
+    "name": "Silas Marsh",
+    "occupation": "The Sailor",
+    "abilities": [
+      {
+        "situation": "test",
+        "cost": {
+          "type": "location",
+          "value": "sea"
+        },
+        "attribute": "any",
+        "bonus": 1
+      }
+    ],
+    "image": "Silas_Marsh.jpg",
+    "baseHealth": 8,
+    "baseSanity": 4,
+    "lore": 1,
+    "influence": 3,
+    "observation": 3,
+    "strength": 3,
+    "will": 3,
+    "inventory": {
+      "items": ["Fishing Net"]
+    }
+  },
+  {
+    "name": "Norman Withers",
+    "occupation": "The Astronomer",
+    "abilities": [
+      {
+        "situation": "reroll",
+        "cost": {
+          "type": "sanity",
+          "value": 1
+        },
+        "attribute": "any",
+        "bonus": 1,
+        "oncePerRound": true
+      }
+    ],
+    "image": "Norman_Withers.jpg",
+    "baseHealth": 5,
+    "baseSanity": 7,
+    "lore": 3,
+    "influence": 1,
+    "observation": 3,
+    "strength": 2,
+    "will": 4,
+    "inventory": {
+      "items": ["Feed the Mind"]
+    }
+  },
+  {
+    "name": "Leo Anderson",
+    "occupation": "The Expedition Leader",
+    "abilities": [
+      {
+        "situation": "test",
+        "cost": {
+          "type": "location",
+          "value": "wilderness"
+        },
+        "attribute": "any",
+        "bonus": 1
+      }
+    ],
+    "image": "Leo_Anderson.jpg",
+    "baseHealth": 6,
+    "baseSanity": 6,
+    "lore": 2,
+    "influence": 2,
+    "observation": 3,
+    "strength": 3,
+    "will": 3,
+    "inventory": {
+      "items": ["Hired Muscle"]
+    }
+  },
+  {
+    "name": "Lola Hayes",
+    "occupation": "The Actress",
+    "abilities": [
+      {
+        "situation": "test",
+        "attribute": "any",
+        "bonus": 1,
+        "oncePerRound": true
+      }
+    ],
+    "image": "Lola_Hayes.jpg",
+    "baseHealth": 5,
+    "baseSanity": 7,
+    "lore": 2,
+    "influence": 4,
+    "observation": 2,
+    "strength": 2,
+    "will": 3,
+    "inventory": {
+      "items": [".18 Derringer"]
     }
   }
 ]

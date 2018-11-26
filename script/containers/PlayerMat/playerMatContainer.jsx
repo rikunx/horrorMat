@@ -16,14 +16,15 @@ function mapStateToProps(state, props) {
           occupation: '',
           health: 0,
           sanity: 0,
-          baseLore: 0,
-          baseInfluence: 0,
-          baseObservation: 0,
-          baseStrength: 0,
-          baseWill: 0,
+          lore: 0,
+          influence: 0,
+          observation: 0,
+          strength: 0,
+          will: 0,
           improvements: {},
           image: '',
-          inventory: []
+          inventory: [],
+          abilities: []
         };
   return {
     ...mat,
@@ -45,11 +46,8 @@ function mapDispatchToProps(dispatch) {
     closeFullscreen() {
       dispatch(appActions.closeFullScreen());
     },
-    promptCombat(test) {
-      dispatch(rollActions.promptCombat(test));
-    },
     promptRoll(test) {
-      dispatch(rollActions.promptRoll(test));
+      dispatch(rollActions.promptTest(test));
     }
   };
 }

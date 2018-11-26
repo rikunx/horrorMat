@@ -10,13 +10,13 @@ import Slide from '@material-ui/core/Slide';
 function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
-const CombatPrompt = ({ classes, combatDialogOpen, test, promptRoll, closeCombatPrompt }) => (
+const CombatPrompt = ({ classes, combatDialogOpen, setCombat, closePrompt }) => (
   <Dialog
     classes={{ paper: classes.paper }}
     open={combatDialogOpen}
     TransitionComponent={Transition}
     keepMounted
-    onClose={closeCombatPrompt}
+    onClose={closePrompt}
     aria-labelledby="alert-dialog-slide-title"
     aria-describedby="alert-dialog-slide-description"
   >
@@ -25,10 +25,10 @@ const CombatPrompt = ({ classes, combatDialogOpen, test, promptRoll, closeCombat
     </div>
     <DialogTitle>Is this a combat roll?</DialogTitle>
     <DialogActions>
-      <Button onClick={() => promptRoll(test)} color="primary">
+      <Button onClick={() => setCombat(false)} color="primary">
         No
       </Button>
-      <Button onClick={() => promptRoll(test, true)} color="primary">
+      <Button onClick={() => setCombat(true)} color="primary">
         Yes
       </Button>
     </DialogActions>

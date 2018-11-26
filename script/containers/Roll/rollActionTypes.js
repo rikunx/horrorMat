@@ -1,9 +1,17 @@
-export const PromptCombat = 'prompt_combat';
-export const CloseCombatPrompt = 'close_combat_prompt';
+export const SetTest = 'set_test';
 
-// TODO
-export const PromptUseInventory = 'prompt_use_inventory';
-export const CloseUseInventoryPrompt = 'close_use_inventory_prompt';
+export const PromptCombat = 'prompt_combat';
+export const SetCombat = 'set_combat';
+
+export const PromptAbilities = 'prompt_abilities';
+export const SetEligibleAbilities = 'set_eligible_abilities';
+export const UseAbility = 'use_ability';
+export const ShowNextAbility = 'show_next_ability';
+
+export const PromptItems = 'prompt_items';
+export const SetEligibleItems = 'set_eligible_items';
+export const UseItem = 'use_item';
+export const ShowNextItem = 'show_next_item';
 
 export const PromptRoll = 'prompt_roll';
 export const CloseRollPrompt = 'close_roll_prompt';
