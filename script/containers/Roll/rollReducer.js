@@ -69,15 +69,8 @@ function rollReducer(state = defaultState, action) {
     case actions.PromptRoll:
       return {
         ...state,
-        test: action.test,
-        baseRoll: action.baseRoll,
-        clues: action.clues,
-        abilities: action.abilities,
-        inventory: action.inventory,
-        cluesToSpend: action.clues,
         total: action.total,
-        phase: RollPhases.Roll,
-        results: []
+        phase: RollPhases.Roll
       };
     case actions.CloseRollPrompt:
       return {

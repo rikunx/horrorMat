@@ -33,7 +33,11 @@
             "required": ["situation", "attribute", "bonus"],
             "properties": {
               "situation": {
-                "enum": ["combat", "test", "attribute", "reroll"],
+                "enum": ["combat", "spell", "test", "attribute", "reroll", "rest"],
+                "description": "can only be one of the enum values and is required"
+              },
+              "secondarySituation": {
+                "enum": ["combat", "spell", "test", "attribute", "reroll", "rest"],
                 "description": "can only be one of the enum values and is required"
               },
               "cost": {
@@ -52,7 +56,7 @@
                 }
               },
               "attribute": {
-                "enum": ["strength", "will", "lore", "influence", "observation", "any"],
+                "enum": ["strength", "will", "lore", "influence", "observation", "health", "sanity", "any"],
                 "description": "can only be one of the enum values and is required"
               },
               "bonus": {

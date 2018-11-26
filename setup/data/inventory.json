@@ -2,48 +2,37 @@
   {
     "name": ".45 Automatic",
     "image": "45_Automatic.jpg",
-    "card": "asset",
-    "category": "item",
-    "type": "weapon",
+    "card": "weapon",
     "test": [
       {
         "situation": "combat",
         "attribute": "strength",
-        "bonus": 3,
-        "oneShot": false,
-        "disposable": false
+        "bonus": 3
       }
     ]
   },
   {
     "name": "Lucky Rabbit's Foot",
     "image": "Lucky_Rabbits_Foot.jpg",
-    "card": "asset",
-    "category": "item",
-    "type": "trinket",
+    "card": "trinket",
     "test": [
       {
         "situation": "reroll",
         "attribute": "any",
         "bonus": 1,
-        "oneShot": true,
-        "disposable": false
+        "oncePerRound": true
       }
     ]
   },
   {
     "name": "Protective Amulet",
     "image": "Protective_Amulet.jpg",
-    "card": "asset",
-    "category": "item",
-    "type": "item",
+    "card": "item",
     "test": [
       {
         "situation": "combat",
         "attribute": "will",
-        "bonus": 1,
-        "oneShot": false,
-        "disposable": false
+        "bonus": 1
       }
     ]
   }

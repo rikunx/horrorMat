@@ -141,7 +141,6 @@ export function setCombat(isCombat) {
       type: actionTypes.SetCombat,
       isCombat
     });
-    console.log('hi');
     dispatch(promptAbilities());
   };
 }
@@ -156,29 +155,6 @@ export function promptTest(test) {
     }
   };
 }
-
-// export function promptRoll(test, isCombat = false) {
-//   return (dispatch, getState) => {
-//     const mat = getState().mat.character.get('character');
-
-//     const baseRoll = mat[test] + mat.improvements[test];
-//     const eligibleItems = retrieveEligibleItems(mat.inventory.items, test, isCombat);
-//     const eligibleAbilities = retrieveEligibleAbilities(mat.abilities, test, isCombat);
-
-//     const itemBonus = eligibleItems.reduce((bonus, item) => bonus + item.test.bonus, 0);
-//     const abilityBonus = eligibleAbilities.reduce((bonus, ability) => bonus + ability.bonus, 0);
-//     dispatch({
-//       type: actionTypes.PromptRoll,
-//       test,
-//       clues: mat.clues,
-//       inventory: eligibleItems,
-//       rerolls: mat.abilities.filter(ability => ability.situation === Situation.REROLL),
-//       baseRoll,
-//       abilities: eligibleAbilities,
-//       total: baseRoll + itemBonus + abilityBonus
-//     });
-//   };
-// }
 
 export function closeRollPrompt() {
   return {

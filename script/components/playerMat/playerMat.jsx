@@ -80,7 +80,8 @@ const PlayerMat = ({
             <div className="label">DISTINGUISHING FEATURES AND ABILITIES</div>
             <hr />
             <div>Regular Roll</div>
-            <div>Ability Action</div>
+            <div>Resolve Spell (-1, 0, +1)</div>
+            <div>Reckoning</div>
           </div>
           <div>
             <div className="label">ITEMS TO DECLARE</div>

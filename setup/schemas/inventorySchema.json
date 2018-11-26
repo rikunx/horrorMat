@@ -2,7 +2,7 @@
   "validator": {
     "$jsonSchema": {
       "bsonType": "object",
-      "required": ["name", "image", "card", "category", "type"],
+      "required": ["name", "image", "card"],
       "properties": {
         "name": {
           "bsonType": "string",
@@ -13,41 +13,68 @@
           "description": "must be a string and is required"
         },
         "card": {
-          "enum": ["asset", "ally", "artifact", "relic", "spell"],
-          "description": "can only be one of the enum values and is required"
-        },
-        "category": {
-          "enum": ["item"],
-          "description": "can only be one of the enum values and is required"
-        },
-        "type": {
-          "enum": ["item", "weapon", "trinket"],
+          "enum": ["item", "weapon", "tome", "trinket", "ally", "artifact", "spell"],
           "description": "can only be one of the enum values and is required"
         },
         "test": {
           "type": "array",
           "items": {
-            "type": "object",
+            "bsonType": "object",
+            "required": ["situation", "attribute", "bonus"],
             "properties": {
               "situation": {
-                "enum": ["combat", "test", "reroll"],
+                "enum": ["combat", "spell", "test", "attribute", "reroll", "rest"],
                 "description": "can only be one of the enum values and is required"
               },
+              "secondarySituation": {
+                "enum": ["combat", "spell", "test", "attribute", "reroll", "rest"],
+                "description": "can only be one of the enum values and is required"
+              },
+              "cost": {
+                "bsonType": "object",
+                "description": "the cost for using the ability",
+                "required": ["type", "value"],
+                "properties": {
+                  "type": {
+                    "enum": ["clue", "health", "sanity", "location"],
+                    "description": "can only be one of the enum values and is required"
+                  },
+                  "value": {
+                    "bsonType": ["int", "string"],
+                    "description": "must be an int or string and is required"
+                  }
+                }
+              },
               "attribute": {
-                "enum": ["strength", "will", "lore", "influence", "observation", "any"],
+                "enum": ["strength", "will", "lore", "influence", "observation", "health", "sanity", "any"],
                 "description": "can only be one of the enum values and is required"
               },
               "bonus": {
                 "bsonType": "int",
-                "description": "must be an int and is required"
+                "description": "how many extra rolls/re-rolls result from this ability or how much to heal. (Re-roll only) 0 indicates up to N dice originally rolled"
+              },
+              "uniqueBonus": {
+                "bsonType": "object",
+                "required": ["type", "value"],
+                "description": "for bonuses that don't just add to the attribute",
+                "properties": {
+                  "type": {
+                    "enum": ["additive", "duplicate"],
+                    "description": "additive is for adding to a result. duplicate is for duplicating successes that are a certain value."
+                  },
+                  "value": {
+                    "bsonType": "int",
+                    "description": ""
+                  }
+                }
               },
               "oncePerRound": {
                 "type": "boolean",
-                "description": "must be a boolean and is required"
+                "description": "is the item used once per round?"
               },
               "disposable": {
                 "type": "boolean",
-                "description": "must be a boolean and is required"
+                "description": "is this item used only once and then disposed?"
               }
             }
           },
