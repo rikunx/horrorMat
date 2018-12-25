@@ -30,8 +30,7 @@ const PlayerMat = ({
   fullscreen,
   openFullscreen,
   closeFullscreen,
-  promptRoll,
-  promptCombat
+  promptRoll
 }) => (
   <div id="player-mat">
     <Passport>
@@ -93,23 +92,38 @@ const PlayerMat = ({
       </div>
       <div id="stats-area">
         <div id="attributes">
-          <div className="attribute-container lore" onClick={() => promptRoll(Attributes.LORE)}>
+          <div
+            className="attribute-container lore"
+            onClick={() => promptRoll(Attributes.LORE, lore, improvements.lore)}
+          >
             <div className="attribute-label">Lore</div>
             <Stamp letter="A" value={lore} improvement={improvements.lore} />
           </div>
-          <div className="attribute-container influence" onClick={() => promptRoll(Attributes.INFLUENCE)}>
+          <div
+            className="attribute-container influence"
+            onClick={() => promptRoll(Attributes.INFLUENCE, influence, improvements.influence)}
+          >
             <div className="attribute-label">Influence</div>
             <Stamp letter="S" value={influence} improvement={improvements.influence} />
           </div>
-          <div className="attribute-container observation" onClick={() => promptRoll(Attributes.OBSERVATION)}>
+          <div
+            className="attribute-container observation"
+            onClick={() => promptRoll(Attributes.OBSERVATION, observation, improvements.observation)}
+          >
             <div className="attribute-label">Observation</div>
             <Stamp letter="D" value={observation} improvement={improvements.observation} />
           </div>
-          <div className="attribute-container strength" onClick={() => promptRoll(Attributes.STRENGTH)}>
+          <div
+            className="attribute-container strength"
+            onClick={() => promptRoll(Attributes.STRENGTH, strength, improvements.strength)}
+          >
             <div className="attribute-label">Strength</div>
             <Stamp letter="F" value={strength} improvement={improvements.strength} />
           </div>
-          <div className="attribute-container will" onClick={() => promptRoll(Attributes.WILL)}>
+          <div
+            className="attribute-container will"
+            onClick={() => promptRoll(Attributes.WILL, will, improvements.will)}
+          >
             <div className="attribute-label">Will</div>
             <Stamp letter="G" value={will} improvement={improvements.will} />
           </div>

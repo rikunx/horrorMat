@@ -8,13 +8,21 @@ function retrieveEligibleItems(items, test, isCombat) {
     .map(item => ({
       ...item,
       test: item.test.find(itemTest => {
-        if (isCombat) return itemTest.situation === Situation.COMBAT && itemTest.attribute === test;
-        return itemTest.situation !== Situation.COMBAT && itemTest.attribute === test;
+        if (isCombat)
+          return (
+            itemTest.situation === Situation.COMBAT &&
+            (itemTest.attribute === test || itemTest.attribute === Attributes.ANY)
+          );
+        return (
+          itemTest.situation !== Situation.COMBAT &&
+          (itemTest.attribute === test || itemTest.attribute === Attributes.ANY)
+        );
       })
     }))
     .filter(item => item.test);
 }
-function retrieveEligibleAbilities(abilities, test, isCombat) {
+
+function retrieveRollEligibleAbilities(abilities, test, isCombat) {
   return abilities.filter(ability => {
     if (isCombat) {
       return (
@@ -25,6 +33,12 @@ function retrieveEligibleAbilities(abilities, test, isCombat) {
     return ability.situation === Situation.TEST && (ability.attribute === test || ability.attribute === Attributes.ANY);
   });
 }
+
+// function retrieveRerollEligibleAbilities(abilities, test, isCombat) {
+//   return abilities.filter(ability => {
+//     return ability.situation === Situation.REROLL &&
+//   });
+// }
 
 export function promptRoll() {
   return (dispatch, getState) => {
@@ -120,7 +134,7 @@ export function promptAbilities() {
     const state = getState();
     const matState = state.mat.character.get('character');
     const rollState = state.roll;
-    const eligibleAbilities = retrieveEligibleAbilities(matState.abilities, rollState.test, rollState.isCombat);
+    const eligibleAbilities = retrieveRollEligibleAbilities(matState.abilities, rollState.test, rollState.isCombat);
     if (eligibleAbilities.length) {
       dispatch({
         type: actionTypes.SetEligibleAbilities,
@@ -145,9 +159,9 @@ export function setCombat(isCombat) {
   };
 }
 
-export function promptTest(test) {
+export function promptTest(test, baseValue, improvementValue) {
   return dispatch => {
-    dispatch({ type: actionTypes.SetTest, test });
+    dispatch({ type: actionTypes.SetTest, test, baseRoll: baseValue + improvementValue });
     if (test === Attributes.STRENGTH || test === Attributes.WILL) {
       dispatch({ type: actionTypes.PromptCombat });
     } else {
@@ -173,6 +187,8 @@ export function roll(numOfDice) {
 
       const results = await response.json();
       dispatch({ type: actionTypes.Rolled, results });
+
+      // todo handle reroll stuff here
     } catch (error) {
       toastActions.show(error, true);
     } finally {

@@ -64,6 +64,19 @@ const AbilityPrompt = ({ classes, test, abilityDialogOpen, ability, useAbility, 
   );
 };
 
-AbilityPrompt.propTypes = {};
+AbilityPrompt.propTypes = {
+  classes: PropTypes.object.isRequired,
+  test: PropTypes.string.isRequired,
+  abilityDialogOpen: PropTypes.bool.isRequired,
+  ability: PropTypes.shape({
+    cost: PropTypes.shape({
+      type: PropTypes.string.isRequired,
+      value: PropTypes.oneOf([PropTypes.string, PropTypes.number])
+    }),
+    bonus: PropTypes.number.isRequired
+  }),
+  useAbility: PropTypes.func.isRequired,
+  closeAbilityPrompt: PropTypes.func.isRequired
+};
 
 export default AbilityPrompt;

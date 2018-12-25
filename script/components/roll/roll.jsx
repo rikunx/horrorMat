@@ -8,6 +8,8 @@ import CombatPrompt from './combatPrompt';
 import TestPrompt from './testPrompt';
 import AbilityPrompt from './abilityPrompt';
 import * as phases from '../../enum/rollPhases';
+import { Ability, Item } from '../../types';
+import { RollPhases } from '../../enum';
 
 const styles = {
   paper: {
@@ -38,7 +40,6 @@ const Roll = ({
     <CombatPrompt
       classes={classes}
       combatDialogOpen={phase === phases.Combat}
-      test={test}
       setCombat={setCombat}
       closePrompt={closeRollPrompt}
     />
@@ -95,6 +96,34 @@ const Roll = ({
   </div>
 );
 
-Roll.propTypes = {};
+Roll.propTypes = {
+  classes: PropTypes.object.isRequired,
+  test: PropTypes.string.isRequired,
+  baseRoll: PropTypes.number.isRequired,
+  clues: PropTypes.number.isRequired,
+  abilities: PropTypes.arrayOf(Ability),
+  eligibleAbilities: PropTypes.arrayOf(Ability),
+  eligibleAbilityIndex: PropTypes.number.isRequired,
+  items: PropTypes.arrayOf(Item),
+  eligibleItems: PropTypes.arrayOf(Item),
+  eligibleItemIndex: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  phase: PropTypes.oneOf([
+    RollPhases.None,
+    RollPhases.Combat,
+    RollPhases.Ability,
+    RollPhases.Items,
+    RollPhases.Roll,
+    RollPhases.Rolling,
+    RollPhases.Rolled,
+    RollPhases.SpendClue,
+    RollPhases.ActionReroll
+  ]).isRequired,
+  results: PropTypes.arrayOf(PropTypes.number).isRequired,
+  setCombat: PropTypes.func.isRequired,
+  useAbility: PropTypes.func.isRequired,
+  closeRollPrompt: PropTypes.func.isRequired,
+  roll: PropTypes.func.isRequired
+};
 
 export default withStyles(styles)(Roll);

@@ -24,6 +24,7 @@ function rollReducer(state = defaultState, action) {
     case actions.SetTest:
       return {
         ...state,
+        baseRoll: action.baseRoll,
         test: action.test
       };
     case actions.PromptCombat:

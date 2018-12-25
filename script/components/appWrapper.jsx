@@ -9,7 +9,7 @@ import PlayerMatContainer from '../containers/PlayerMat/playerMatContainer';
 import Spinner from './spinner/spinner';
 
 class AppWrapper extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.initialize();
   }
 

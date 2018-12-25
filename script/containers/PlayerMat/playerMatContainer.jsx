@@ -21,7 +21,13 @@ function mapStateToProps(state, props) {
           observation: 0,
           strength: 0,
           will: 0,
-          improvements: {},
+          improvements: {
+            strength: 0,
+            will: 0,
+            influence: 0,
+            observation: 0,
+            lore: 0
+          },
           image: '',
           inventory: [],
           abilities: []
@@ -46,8 +52,8 @@ function mapDispatchToProps(dispatch) {
     closeFullscreen() {
       dispatch(appActions.closeFullScreen());
     },
-    promptRoll(test) {
-      dispatch(rollActions.promptTest(test));
+    promptRoll(test, baseValue, improvementValue) {
+      dispatch(rollActions.promptTest(test, baseValue, improvementValue));
     }
   };
 }

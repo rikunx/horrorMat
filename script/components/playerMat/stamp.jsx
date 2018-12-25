@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import AttributeCircle from './attributeCircle';
 
 const Stamp = ({ letter, value, improvement }) => (
@@ -17,6 +19,10 @@ const Stamp = ({ letter, value, improvement }) => (
   </div>
 );
 
-Stamp.propTypes = {};
+Stamp.propTypes = {
+  letter: PropTypes.string.isRequired,
+  improvement: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired
+};
 
 export default Stamp;

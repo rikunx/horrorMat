@@ -65,7 +65,7 @@
               },
               "oncePerRound": {
                 "type": "boolean",
-                "description": "must be a boolean and is required"
+                "description": "determines if this ability can be used once per round"
               }
             }
           }

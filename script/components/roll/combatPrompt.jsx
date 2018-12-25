@@ -35,6 +35,11 @@ const CombatPrompt = ({ classes, combatDialogOpen, setCombat, closePrompt }) => 
   </Dialog>
 );
 
-CombatPrompt.propTypes = {};
+CombatPrompt.propTypes = {
+  classes: PropTypes.object.isRequired,
+  combatDialogOpen: PropTypes.bool.isRequired,
+  setCombat: PropTypes.func.isRequired,
+  closePrompt: PropTypes.func.isRequired
+};
 
 export default CombatPrompt;

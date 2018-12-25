@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const AttributeCircle = ({ children }) => (
   <div className="stat-container">
@@ -8,6 +9,8 @@ const AttributeCircle = ({ children }) => (
   </div>
 );
 
-AttributeCircle.propTypes = {};
+AttributeCircle.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
 export default AttributeCircle;

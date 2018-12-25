@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const PhysiologicalIndex = ({ letter, type, value }) => (
   <div className={`${type} index-value`}>
@@ -11,6 +12,10 @@ const PhysiologicalIndex = ({ letter, type, value }) => (
   </div>
 );
 
-PhysiologicalIndex.propTypes = {};
+PhysiologicalIndex.propTypes = {
+  letter: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired
+};
 
 export default PhysiologicalIndex;

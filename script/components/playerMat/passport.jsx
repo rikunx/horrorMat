@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Passport = ({ children }) => (
   <div id="passport">
@@ -12,6 +13,8 @@ const Passport = ({ children }) => (
   </div>
 );
 
-Passport.propTypes = {};
+Passport.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
 export default Passport;

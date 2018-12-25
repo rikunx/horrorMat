@@ -8,6 +8,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
+import { Ability, Item } from '../../types';
 
 function Transition(props) {
   return <Slide direction="up" {...props} />;
@@ -52,6 +53,16 @@ const TestPrompt = ({ classes, rollDialogOpen, test, baseRoll, abilities, items,
   </Dialog>
 );
 
-TestPrompt.propTypes = {};
+TestPrompt.propTypes = {
+  classes: PropTypes.object.isRequired,
+  rollDialogOpen: PropTypes.bool.isRequired,
+  test: PropTypes.string.isRequired,
+  baseRoll: PropTypes.number.isRequired,
+  abilities: PropTypes.arrayOf(Ability),
+  items: PropTypes.arrayOf(Item),
+  total: PropTypes.number.isRequired,
+  closePrompt: PropTypes.func.isRequired,
+  roll: PropTypes.func.isRequired
+};
 
 export default TestPrompt;

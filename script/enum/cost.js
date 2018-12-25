@@ -1,4 +1,4 @@
-export const Clue = 'clue';
-export const Health = 'health';
-export const Sanity = 'sanity';
-export const Location = 'location';
+export const CLUE = 'clue';
+export const HEALTH = 'health';
+export const SANITY = 'sanity';
+export const LOCATION = 'location';
