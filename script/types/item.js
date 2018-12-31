@@ -1,20 +1,21 @@
 import PropTypes from 'prop-types';
-import { Card, Situation, UniqueBonus } from '../enum';
+import { Card } from '../enum';
+import Bonuses from './bonuses';
+import Cost from './cost';
+import Test from './test';
+import Situation from './situation';
 
 export default PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
   card: PropTypes.oneOf([Card.ITEM, Card.WEAPON, Card.TOME, Card.TRINKET, Card.ALLY, Card.ARTIFACT, Card.SPELL])
     .isRequired,
-  image: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  test: PropTypes.shape({
-    attribute: PropTypes.string.isRequired,
-    situation: PropTypes.oneOf([Situation.COMBAT, Situation.TEST, Situation.REROLL, Situation.ATTRIBUTE]).isRequired,
-    bonus: PropTypes.number.isRequired,
+  effects: PropTypes.shape({
+    situation: Situation.isRequired,
+    bonuses: Bonuses.isRequired,
+    cost: Cost,
+    test: Test,
     oncePerRound: PropTypes.bool,
-    uniqueBonus: PropTypes.shape({
-      type: PropTypes.oneOf([UniqueBonus.ADDITIVE, UniqueBonus.DUPLICATE]).isRequired,
-      value: PropTypes.number.isRequired
-    }),
     disposable: PropTypes.bool
   })
 });

@@ -12,7 +12,7 @@
     "strength": 3,
     "will": 2,
     "inventory": {
-      "items": ["Protective Amulet", "Lucky Rabbit's Foot"]
+      "items": [".45 Automatic", "Protective Amulet", "Lucky Rabbit's Foot"]
     }
   },
   {
@@ -20,13 +20,18 @@
     "occupation": "The Spy",
     "abilities": [
       {
-        "situation": "reroll",
+        "situation": "test",
         "cost": {
           "type": "clue",
           "value": 1
         },
-        "attribute": "any",
-        "bonus": 2
+        "bonuses": [
+          {
+            "attribute": "any",
+            "type": "reroll",
+            "value": 2
+          }
+        ]
       }
     ],
     "image": "Trish_Scarborough.jpg",
@@ -129,8 +134,13 @@
     "abilities": [
       {
         "situation": "combat",
-        "attribute": "any",
-        "bonus": 1
+        "bonuses": [
+          {
+            "attribute": "any",
+            "type": "extra",
+            "value": 1
+          }
+        ]
       }
     ],
     "image": "Jim_Culver.jpg",
@@ -156,8 +166,13 @@
           "type": "location",
           "value": "sea"
         },
-        "attribute": "any",
-        "bonus": 1
+        "bonuses": [
+          {
+            "attribute": "any",
+            "type": "extra",
+            "value": 1
+          }
+        ]
       }
     ],
     "image": "Silas_Marsh.jpg",
@@ -177,13 +192,18 @@
     "occupation": "The Astronomer",
     "abilities": [
       {
-        "situation": "reroll",
+        "situation": "test",
         "cost": {
           "type": "sanity",
           "value": 1
         },
-        "attribute": "any",
-        "bonus": 1,
+        "bonuses": [
+          {
+            "attribute": "any",
+            "type": "reroll",
+            "value": 1
+          }
+        ],
         "oncePerRound": true
       }
     ],
@@ -209,8 +229,13 @@
           "type": "location",
           "value": "wilderness"
         },
-        "attribute": "any",
-        "bonus": 1
+        "bonuses": [
+          {
+            "attribute": "any",
+            "type": "extra",
+            "value": 1
+          }
+        ]
       }
     ],
     "image": "Leo_Anderson.jpg",
@@ -231,8 +256,13 @@
     "abilities": [
       {
         "situation": "test",
-        "attribute": "any",
-        "bonus": 1,
+        "bonuses": [
+          {
+            "attribute": "any",
+            "type": "extra",
+            "value": 1
+          }
+        ],
         "oncePerRound": true
       }
     ],

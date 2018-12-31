@@ -30,14 +30,10 @@
           "description": "abilities that contribute to number of dice rolled",
           "items": {
             "bsonType": "object",
-            "required": ["situation", "attribute", "bonus"],
+            "required": ["situation", "bonuses"],
             "properties": {
               "situation": {
-                "enum": ["combat", "spell", "test", "attribute", "reroll", "rest"],
-                "description": "can only be one of the enum values and is required"
-              },
-              "secondarySituation": {
-                "enum": ["combat", "spell", "test", "attribute", "reroll", "rest"],
+                "enum": ["combat", "research", "spell", "test", "acquire", "reroll", "rest", "reckoning"],
                 "description": "can only be one of the enum values and is required"
               },
               "cost": {
@@ -55,13 +51,46 @@
                   }
                 }
               },
-              "attribute": {
-                "enum": ["strength", "will", "lore", "influence", "observation", "health", "sanity", "any"],
-                "description": "can only be one of the enum values and is required"
+              "test": {
+                "bsonType": "object",
+                "description": "for bonuses that request a test to take affect",
+                "required": ["type", "modifier"],
+                "properties": {
+                  "type": {
+                    "enum": ["strength", "will", "lore", "influence", "observation"],
+                    "description": "test against one of the attributes"
+                  },
+                  "modifier": {
+                    "bsonType": "int",
+                    "description": "modifier for test"
+                  }
+                }
               },
-              "bonus": {
-                "bsonType": "int",
-                "description": "how many extra rolls result from this ability"
+              "bonuses": {
+                "type": "array",
+                "description": "list of bonuses",
+                "items": {
+                  "bsonType": "object",
+                  "required": ["attribute", "type", "value"],
+                  "properties": {
+                    "attribute": {
+                      "enum": ["strength", "will", "lore", "influence", "observation", "health", "sanity", "any"],
+                      "description": "can only be one of the enum values and is required"
+                    },
+                    "type": {
+                      "enum": ["extra", "reroll", "additive", "duplicate", "clue"],
+                      "description": "extra is for more dice. additive is for adding to a result. duplicate is for duplicating successes that are a certain value."
+                    },
+                    "value": {
+                      "bsonType": "int",
+                      "description": "how many extra rolls/re-rolls result from this ability or how much to heal. (Re-roll only) 0 indicates up to N dice originally rolled"
+                    },
+                    "additional": {
+                      "bsonType": "int",
+                      "description": "any additional number for bonuses (mainly for additive/duplicate)"
+                    }
+                  }
+                }
               },
               "oncePerRound": {
                 "type": "boolean",

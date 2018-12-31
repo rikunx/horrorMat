@@ -11,7 +11,7 @@ import { Cost } from '../../enum';
 function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
-const AbilityPrompt = ({ classes, test, abilityDialogOpen, ability, useAbility, closeAbilityPrompt }) => {
+const AbilityPrompt = ({ classes, test, open, ability, useAbility, closeAbilityPrompt }) => {
   let promptMessage = `Do you want to use your ability to give you ${ability.bonus} bonus dice?`;
   const cost = ability.cost;
   if (cost) {
@@ -41,7 +41,7 @@ const AbilityPrompt = ({ classes, test, abilityDialogOpen, ability, useAbility, 
   return (
     <Dialog
       classes={{ paper: classes.paper }}
-      open={abilityDialogOpen}
+      open={open}
       TransitionComponent={Transition}
       keepMounted
       onClose={closeAbilityPrompt}
@@ -67,7 +67,7 @@ const AbilityPrompt = ({ classes, test, abilityDialogOpen, ability, useAbility, 
 AbilityPrompt.propTypes = {
   classes: PropTypes.object.isRequired,
   test: PropTypes.string.isRequired,
-  abilityDialogOpen: PropTypes.bool.isRequired,
+  open: PropTypes.bool.isRequired,
   ability: PropTypes.shape({
     cost: PropTypes.shape({
       type: PropTypes.string.isRequired,

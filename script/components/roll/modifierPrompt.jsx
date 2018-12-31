@@ -10,10 +10,10 @@ import Slide from '@material-ui/core/Slide';
 function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
-const CombatPrompt = ({ classes, combatDialogOpen, setCombat, closePrompt }) => (
+const ModifierPrompt = ({ classes, open, modifier, setModifier, promptSituation, closePrompt }) => (
   <Dialog
     classes={{ paper: classes.paper }}
-    open={combatDialogOpen}
+    open={open}
     TransitionComponent={Transition}
     keepMounted
     onClose={closePrompt}
@@ -23,23 +23,32 @@ const CombatPrompt = ({ classes, combatDialogOpen, setCombat, closePrompt }) => 
     <div className="prompt-background">
       <img src="images/burnt_paper.png" />
     </div>
-    <DialogTitle>Is this a combat roll?</DialogTitle>
+    <DialogTitle>Test Modifier:</DialogTitle>
+    <Button onClick={() => setModifier(modifier - 1)} color="primary">
+      -
+    </Button>
+    {modifier}
+    <Button onClick={() => setModifier(modifier + 1)} color="primary">
+      +
+    </Button>
     <DialogActions>
-      <Button onClick={() => setCombat(false)} color="primary">
-        No
+      <Button onClick={() => closePrompt()} color="primary">
+        Close
       </Button>
-      <Button onClick={() => setCombat(true)} color="primary">
-        Yes
+      <Button onClick={() => promptSituation()} color="primary">
+        Set
       </Button>
     </DialogActions>
   </Dialog>
 );
 
-CombatPrompt.propTypes = {
+ModifierPrompt.propTypes = {
   classes: PropTypes.object.isRequired,
-  combatDialogOpen: PropTypes.bool.isRequired,
-  setCombat: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
+  modifier: PropTypes.number.isRequired,
+  setModifier: PropTypes.func.isRequired,
+  promptSituation: PropTypes.func.isRequired,
   closePrompt: PropTypes.func.isRequired
 };
 
-export default CombatPrompt;
+export default ModifierPrompt;

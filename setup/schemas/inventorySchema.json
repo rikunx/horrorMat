@@ -16,18 +16,15 @@
           "enum": ["item", "weapon", "tome", "trinket", "ally", "artifact", "spell"],
           "description": "can only be one of the enum values and is required"
         },
-        "test": {
+        "effects": {
           "type": "array",
+          "description": "list of effects of the item",
           "items": {
             "bsonType": "object",
-            "required": ["situation", "attribute", "bonus"],
+            "required": ["situation", "bonuses"],
             "properties": {
               "situation": {
-                "enum": ["combat", "spell", "test", "attribute", "reroll", "rest"],
-                "description": "can only be one of the enum values and is required"
-              },
-              "secondarySituation": {
-                "enum": ["combat", "spell", "test", "attribute", "reroll", "rest"],
+                "enum": ["combat", "research", "spell", "test", "acquire", "rest", "reckoning"],
                 "description": "can only be one of the enum values and is required"
               },
               "cost": {
@@ -45,26 +42,44 @@
                   }
                 }
               },
-              "attribute": {
-                "enum": ["strength", "will", "lore", "influence", "observation", "health", "sanity", "any"],
-                "description": "can only be one of the enum values and is required"
-              },
-              "bonus": {
-                "bsonType": "int",
-                "description": "how many extra rolls/re-rolls result from this ability or how much to heal. (Re-roll only) 0 indicates up to N dice originally rolled"
-              },
-              "uniqueBonus": {
+              "test": {
                 "bsonType": "object",
-                "required": ["type", "value"],
-                "description": "for bonuses that don't just add to the attribute",
+                "description": "for bonuses that request a test to take affect",
+                "required": ["type", "modifier"],
                 "properties": {
                   "type": {
-                    "enum": ["additive", "duplicate"],
-                    "description": "additive is for adding to a result. duplicate is for duplicating successes that are a certain value."
+                    "enum": ["strength", "will", "lore", "influence", "observation"],
+                    "description": "test against one of the attributes"
                   },
-                  "value": {
+                  "modifier": {
                     "bsonType": "int",
-                    "description": ""
+                    "description": "modifier for test"
+                  }
+                }
+              },
+              "bonuses": {
+                "type": "array",
+                "description": "list of bonuses",
+                "items": {
+                  "bsonType": "object",
+                  "required": ["attribute", "type", "value"],
+                  "properties": {
+                    "attribute": {
+                      "enum": ["strength", "will", "lore", "influence", "observation", "health", "sanity", "any"],
+                      "description": "can only be one of the enum values and is required"
+                    },
+                    "type": {
+                      "enum": ["extra", "reroll", "additive", "duplicate", "clue"],
+                      "description": "extra is for more dice. additive is for adding to a result. duplicate is for duplicating successes that are a certain value."
+                    },
+                    "value": {
+                      "bsonType": "int",
+                      "description": "how many extra rolls/re-rolls result from this ability or how much to heal. (Re-roll only) 0 indicates up to N dice originally rolled"
+                    },
+                    "additional": {
+                      "bsonType": "int",
+                      "description": "any additional number for bonuses (mainly for additive/duplicate)"
+                    }
                   }
                 }
               },
@@ -77,8 +92,7 @@
                 "description": "is this item used only once and then disposed?"
               }
             }
-          },
-          "description": "must be an array and is required"
+          }
         }
       }
     }

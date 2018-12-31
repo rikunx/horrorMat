@@ -1,5 +1,6 @@
 export const None = 'none';
-export const Combat = 'combat';
+export const Modifier = 'modifier';
+export const Situation = 'situation';
 export const Ability = 'ability';
 export const Items = 'items';
 export const Roll = 'roll';

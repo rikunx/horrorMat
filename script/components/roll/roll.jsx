@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
 
-import CombatPrompt from './combatPrompt';
+import SituationPrompt from './situationPrompt';
 import TestPrompt from './testPrompt';
 import AbilityPrompt from './abilityPrompt';
 import * as phases from '../../enum/rollPhases';
 import { Ability, Item } from '../../types';
 import { RollPhases } from '../../enum';
+import ModifierPrompt from './modifierPrompt';
 
 const styles = {
   paper: {
@@ -21,6 +22,7 @@ const Roll = ({
   classes,
   test,
   baseRoll,
+  modifier,
   clues,
   abilities,
   eligibleAbilities,
@@ -31,16 +33,27 @@ const Roll = ({
   total,
   phase,
   results,
-  setCombat,
+  setModifier,
+  promptSituation,
+  setSituation,
   useAbility,
   closeRollPrompt,
   roll
 }) => (
   <div id="roll-pad">
-    <CombatPrompt
+    <ModifierPrompt
       classes={classes}
-      combatDialogOpen={phase === phases.Combat}
-      setCombat={setCombat}
+      open={phase === phases.Modifier}
+      modifier={modifier}
+      setModifier={setModifier}
+      promptSituation={promptSituation}
+      closePrompt={closeRollPrompt}
+    />
+    <SituationPrompt
+      classes={classes}
+      open={phase === phases.Situation}
+      test={test}
+      setSituation={setSituation}
       closePrompt={closeRollPrompt}
     />
     {(() => {
@@ -48,7 +61,7 @@ const Roll = ({
         return (
           <AbilityPrompt
             classes={classes}
-            abilityDialogOpen={phase === phases.Ability}
+            open={phase === phases.Ability}
             test={test}
             ability={eligibleAbilities[eligibleAbilityIndex]}
             useAbility={useAbility}
@@ -100,6 +113,7 @@ Roll.propTypes = {
   classes: PropTypes.object.isRequired,
   test: PropTypes.string.isRequired,
   baseRoll: PropTypes.number.isRequired,
+  modifier: PropTypes.number.isRequired,
   clues: PropTypes.number.isRequired,
   abilities: PropTypes.arrayOf(Ability),
   eligibleAbilities: PropTypes.arrayOf(Ability),
@@ -110,7 +124,8 @@ Roll.propTypes = {
   total: PropTypes.number.isRequired,
   phase: PropTypes.oneOf([
     RollPhases.None,
-    RollPhases.Combat,
+    RollPhases.Modifier,
+    RollPhases.Situation,
     RollPhases.Ability,
     RollPhases.Items,
     RollPhases.Roll,
@@ -120,7 +135,9 @@ Roll.propTypes = {
     RollPhases.ActionReroll
   ]).isRequired,
   results: PropTypes.arrayOf(PropTypes.number).isRequired,
-  setCombat: PropTypes.func.isRequired,
+  setModifier: PropTypes.func.isRequired,
+  promptSituation: PropTypes.func.isRequired,
+  setSituation: PropTypes.func.isRequired,
   useAbility: PropTypes.func.isRequired,
   closeRollPrompt: PropTypes.func.isRequired,
   roll: PropTypes.func.isRequired

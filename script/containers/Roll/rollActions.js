@@ -1,37 +1,49 @@
 import * as actionTypes from './rollActionTypes';
 import * as toastActions from '../Toast/toastActions';
 
-import { Attributes, Situation } from '../../enum';
+import { Attributes, Situation, BonusType } from '../../enum';
 
-function retrieveEligibleItems(items, test, isCombat) {
+function retrieveEligibleItems(items, attribute, situation) {
+  items
+    .map(item => ({
+      ...item,
+      effects: item.effects.filter(
+        effect =>
+          (effect.situation === situation || effect.situation === Situation.TEST) &&
+          effect.bonuses.find(
+            bonus =>
+              (bonus.attribute === attribute || bonus.attribute === Attributes.ANY) &&
+              (bonus.type !== BonusType.REROLL && bonus.type !== BonusType.CLUE)
+          )
+      )
+    }))
+    .filter(item => item.effects.length > 0);
   return items
     .map(item => ({
       ...item,
-      test: item.test.find(itemTest => {
-        if (isCombat)
-          return (
-            itemTest.situation === Situation.COMBAT &&
-            (itemTest.attribute === test || itemTest.attribute === Attributes.ANY)
-          );
-        return (
-          itemTest.situation !== Situation.COMBAT &&
-          (itemTest.attribute === test || itemTest.attribute === Attributes.ANY)
-        );
-      })
+      effects: item.effects.filter(
+        effect =>
+          (effect.situation === situation || effect.situation === Situation.TEST) &&
+          effect.bonuses.find(
+            bonus =>
+              (bonus.attribute === attribute || bonus.attribute === Attributes.ANY) &&
+              (bonus.type !== BonusType.REROLL && bonus.type !== BonusType.CLUE)
+          )
+      )
     }))
-    .filter(item => item.test);
+    .filter(item => item.effects.length > 0);
 }
 
-function retrieveRollEligibleAbilities(abilities, test, isCombat) {
-  return abilities.filter(ability => {
-    if (isCombat) {
-      return (
-        (ability.situation === Situation.COMBAT || ability.situation === Situation.TEST) &&
-        (ability.attribute === test || ability.attribute === Attributes.ANY)
-      );
-    }
-    return ability.situation === Situation.TEST && (ability.attribute === test || ability.attribute === Attributes.ANY);
-  });
+function retrieveRollEligibleAbilities(abilities, attribute, situation) {
+  return abilities.filter(
+    ability =>
+      (ability.situation === situation || ability.situation === Situation.TEST) &&
+      ability.bonuses.find(
+        bonus =>
+          (bonus.attribute === attribute || bonus.attribute === Attributes.ANY) &&
+          (bonus.type !== BonusType.REROLL && bonus.type !== BonusType.CLUE)
+      )
+  );
 }
 
 // function retrieveRerollEligibleAbilities(abilities, test, isCombat) {
@@ -92,7 +104,7 @@ export function promptItems() {
     const matState = state.mat.character.get('character');
     const rollState = state.roll;
 
-    const eligibleItems = retrieveEligibleItems(matState.inventory.items, rollState.test, rollState.isCombat);
+    const eligibleItems = retrieveEligibleItems(matState.inventory.items, rollState.test, rollState.situation);
     if (eligibleItems.length) {
       dispatch({ type: actionTypes.SetEligibleItems, eligibleItems });
       dispatch({ type: actionTypes.PromptItems });
@@ -134,7 +146,7 @@ export function promptAbilities() {
     const state = getState();
     const matState = state.mat.character.get('character');
     const rollState = state.roll;
-    const eligibleAbilities = retrieveRollEligibleAbilities(matState.abilities, rollState.test, rollState.isCombat);
+    const eligibleAbilities = retrieveRollEligibleAbilities(matState.abilities, rollState.test, rollState.situation);
     if (eligibleAbilities.length) {
       dispatch({
         type: actionTypes.SetEligibleAbilities,
@@ -149,24 +161,42 @@ export function promptAbilities() {
   };
 }
 
-export function setCombat(isCombat) {
-  return dispatch => {
+export function setSituation(situation) {
+  return (dispatch, getState) => {
+    const state = getState();
+    const {
+      abilities,
+      inventory: { items }
+    } = state.mat.character.get('character');
     dispatch({
-      type: actionTypes.SetCombat,
-      isCombat
+      type: actionTypes.SetSituation,
+      situation,
+      abilities,
+      items
     });
     dispatch(promptAbilities());
   };
 }
 
+export function promptSituation() {
+  return { type: actionTypes.PromptSituation };
+}
+
+export function setModifier(modifier) {
+  return {
+    type: actionTypes.SetModifier,
+    modifier
+  };
+}
+
+export function promptModifier() {
+  return { type: actionTypes.PromptModifier };
+}
+
 export function promptTest(test, baseValue, improvementValue) {
   return dispatch => {
     dispatch({ type: actionTypes.SetTest, test, baseRoll: baseValue + improvementValue });
-    if (test === Attributes.STRENGTH || test === Attributes.WILL) {
-      dispatch({ type: actionTypes.PromptCombat });
-    } else {
-      dispatch(promptAbilities());
-    }
+    dispatch(promptModifier());
   };
 }
 

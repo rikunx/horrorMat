@@ -3,11 +3,16 @@
     "name": ".45 Automatic",
     "image": "45_Automatic.jpg",
     "card": "weapon",
-    "test": [
+    "effects": [
       {
         "situation": "combat",
-        "attribute": "strength",
-        "bonus": 3
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "extra",
+            "value": 3
+          }
+        ]
       }
     ]
   },
@@ -15,11 +20,16 @@
     "name": "Lucky Rabbit's Foot",
     "image": "Lucky_Rabbits_Foot.jpg",
     "card": "trinket",
-    "test": [
+    "effects": [
       {
-        "situation": "reroll",
-        "attribute": "any",
-        "bonus": 1,
+        "situation": "test",
+        "bonuses": [
+          {
+            "attribute": "any",
+            "type": "reroll",
+            "value": 1
+          }
+        ],
         "oncePerRound": true
       }
     ]
@@ -28,11 +38,826 @@
     "name": "Protective Amulet",
     "image": "Protective_Amulet.jpg",
     "card": "item",
-    "test": [
+    "effects": [
       {
         "situation": "combat",
-        "attribute": "will",
-        "bonus": 1
+        "bonuses": [
+          {
+            "attribute": "will",
+            "type": "extra",
+            "value": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Elder Sign",
+    "image": "Elder_Sign.jpg",
+    "card": "trinket",
+    "effects": [
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "will",
+            "type": "reroll",
+            "value": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Mystic Bounty Hunter",
+    "image": "Mystic_Bounty_Hunter.jpg",
+    "card": "ally",
+    "effects": [
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "extra",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "situation": "spell",
+        "bonuses": [
+          {
+            "attribute": "lore",
+            "type": "extra",
+            "value": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Syndicate Agent",
+    "image": "Syndicate_Agent.jpg",
+    "card": "ally",
+    "effects": [
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "extra",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "reroll",
+            "value": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Hired Muscle",
+    "image": "Hired_Muscle.jpg",
+    "card": "ally",
+    "effects": [
+      {
+        "situation": "test",
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "extra",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "situation": "test",
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "reroll",
+            "value": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Private Investigator",
+    "image": "Private_Investigator.jpg",
+    "card": "ally",
+    "effects": [
+      {
+        "situation": "test",
+        "bonuses": [
+          {
+            "attribute": "observation",
+            "type": "extra",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "situation": "test",
+        "bonuses": [
+          {
+            "attribute": "observation",
+            "type": "reroll",
+            "value": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Lantern",
+    "image": "Lantern.jpg",
+    "card": "item",
+    "effects": [
+      {
+        "situation": "test",
+        "bonuses": [
+          {
+            "attribute": "any",
+            "type": "extra",
+            "value": 1
+          }
+        ],
+        "oncePerRound": true
+      }
+    ]
+  },
+  {
+    "name": "Bodyguard",
+    "image": "Bodyguard.jpg",
+    "card": "ally",
+    "effects": [
+      {
+        "situation": "test",
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "extra",
+            "value": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Fishing Net",
+    "image": "Fishing_Net.jpg",
+    "card": "item",
+    "effects": [
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "reroll",
+            "value": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Arcane Manuscripts",
+    "image": "Arcane_Manuscripts.jpg",
+    "card": "item",
+    "effects": [
+      {
+        "situation": "spell",
+        "bonuses": [
+          {
+            "attribute": "lore",
+            "type": "extra",
+            "value": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Holy Cross",
+    "image": "Holy_Cross.jpg",
+    "card": "item",
+    "effects": [
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "will",
+            "type": "extra",
+            "value": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Enchanted Blade",
+    "image": "Enchanted_Blade.jpg",
+    "card": "weapon",
+    "effects": [
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "will",
+            "type": "extra",
+            "value": 1
+          },
+          {
+            "attribute": "strength",
+            "type": "extra",
+            "value": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Spirit Dagger",
+    "image": "Spirit_Dagger.jpg",
+    "card": "weapon",
+    "effects": [
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "will",
+            "type": "extra",
+            "value": 1
+          },
+          {
+            "attribute": "strength",
+            "type": "extra",
+            "value": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": ".38 Revolver",
+    "image": "38_Revolver.jpg",
+    "card": "weapon",
+    "effects": [
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "extra",
+            "value": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": ".45 Colt Revolver",
+    "image": "45_Colt_Revolver.jpg",
+    "card": "weapon",
+    "effects": [
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "extra",
+            "value": 3
+          }
+        ],
+        "oncePerRound": true
+      }
+    ]
+  },
+  {
+    "name": "Personal Assistant",
+    "image": "Personal_Assistant.jpg",
+    "card": "ally",
+    "effects": [
+      {
+        "situation": "test",
+        "bonuses": [
+          {
+            "attribute": "influence",
+            "type": "extra",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "situation": "test",
+        "bonuses": [
+          {
+            "attribute": "influence",
+            "type": "reroll",
+            "value": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Urban Guide",
+    "image": "Urban_Guide.jpg",
+    "card": "ally",
+    "cost": {
+      "type": "location",
+      "value": "city"
+    },
+    "effects": [
+      {
+        "situation": "test",
+        "cost": {
+          "type": "location",
+          "value": "city"
+        },
+        "bonuses": [
+          {
+            "attribute": "any",
+            "type": "extra",
+            "value": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Arcane Scholar",
+    "image": "Arcane_Scholar.jpg",
+    "card": "ally",
+    "effects": [
+      {
+        "situation": "test",
+        "bonuses": [
+          {
+            "attribute": "lore",
+            "type": "extra",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "situation": "test",
+        "bonuses": [
+          {
+            "attribute": "lore",
+            "type": "reroll",
+            "value": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Carbine Rifle",
+    "image": "Carbine_Rifle.jpg",
+    "card": "weapon",
+    "effects": [
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "extra",
+            "value": 5
+          }
+        ],
+        "oncePerRound": true
+      }
+    ]
+  },
+  {
+    "name": "Conspiracy Theorist",
+    "image": "Conspiracy_Theorist.jpg",
+    "card": "ally",
+    "effects": [
+      {
+        "situation": "research",
+        "bonuses": [
+          {
+            "attribute": "observation",
+            "type": "extra",
+            "value": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Bull Whip",
+    "image": "Bull_Whip.jpg",
+    "card": "weapon",
+    "effects": [
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "extra",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "reroll",
+            "value": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Arcane Tome",
+    "image": "Arcane_Tome.jpg",
+    "card": "tome",
+    "effects": [
+      {
+        "situation": "spell",
+        "bonuses": [
+          {
+            "attribute": "lore",
+            "type": "extra",
+            "value": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Vatican Missionary",
+    "image": "Vatican_Missionary.jpg",
+    "card": "ally",
+    "effects": [
+      {
+        "situation": "test",
+        "bonuses": [
+          {
+            "attribute": "will",
+            "type": "extra",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "situation": "test",
+        "bonuses": [
+          {
+            "attribute": "will",
+            "type": "reroll",
+            "value": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Lucky Ring",
+    "image": "Lucky_Ring.jpg",
+    "card": "trinket",
+    "effects": [
+      {
+        "situation": "test",
+        "bonuses": [
+          {
+            "attribute": "any",
+            "type": "reroll",
+            "value": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "King James Bible",
+    "image": "King_James_Bible.jpg",
+    "card": "tome",
+    "effects": [
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "will",
+            "type": "extra",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "situation": "rest",
+        "bonuses": [
+          {
+            "attribute": "sanity",
+            "type": "extra",
+            "value": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": ".18 Derringer",
+    "image": "18_Derringer.jpg",
+    "card": "weapon",
+    "effects": [
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "additive",
+            "value": 1,
+            "additional": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Axe",
+    "image": "Axe.jpg",
+    "card": "weapon",
+    "effects": [
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "extra",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "extra",
+            "value": 0
+          }
+        ],
+        "cost": {
+          "type": "sanity",
+          "value": 2
+        }
+      }
+    ]
+  },
+  {
+    "name": "Tear Gas",
+    "image": "Tear_Gas.jpg",
+    "card": "weapon",
+    "effects": [
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "reroll",
+            "value": 2
+          }
+        ],
+        "disposable": true
+      }
+    ]
+  },
+  {
+    "name": "Holy Water",
+    "image": "Holy_Water.jpg",
+    "card": "item",
+    "effects": [
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "extra",
+            "value": 5
+          },
+          {
+            "attribute": "will",
+            "type": "extra",
+            "value": 5
+          }
+        ],
+        "disposable": true
+      }
+    ]
+  },
+  {
+    "name": "Kerosene",
+    "image": "Kerosene.jpg",
+    "card": "item",
+    "effects": [
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "extra",
+            "value": 5
+          }
+        ],
+        "disposable": true
+      }
+    ]
+  },
+  {
+    "name": "Double-barreled Shotgun",
+    "image": "Double-barreled_Shotgun.jpg",
+    "card": "weapon",
+    "effects": [
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "extra",
+            "value": 4
+          }
+        ]
+      },
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "duplicate",
+            "value": 6
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Lucky Cigarette Case",
+    "image": "Lucky_Cigarette_Case.jpg",
+    "card": "trinket",
+    "effects": [
+      {
+        "situation": "test",
+        "bonuses": [
+          {
+            "attribute": "any",
+            "type": "additive",
+            "value": 1,
+            "additional": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Fine Clothes",
+    "image": "Fine_Clothes.jpg",
+    "card": "item",
+    "effects": [
+      {
+        "situation": "acquire",
+        "bonuses": [
+          {
+            "attribute": "influence",
+            "type": "duplicate",
+            "value": 2,
+            "additional": 6
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Gate Box",
+    "image": "Gate_Box.jpg",
+    "card": "artifact",
+    "effects": [
+      {
+        "situation": "test",
+        "cost": {
+          "type": "location",
+          "value": "other world"
+        },
+        "bonuses": [
+          {
+            "attribute": "any",
+            "type": "extra",
+            "value": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Sword of Saint Jerome",
+    "image": "Sword_of_Saint_Jerome.jpg",
+    "card": "artifact",
+    "effects": [
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "will",
+            "type": "extra",
+            "value": 2
+          },
+          {
+            "attribute": "strength",
+            "type": "extra",
+            "value": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Lightning Gun",
+    "image": "Lightning_Gun.jpg",
+    "card": "artifact",
+    "effects": [
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "extra",
+            "value": 6
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Zantha Tablets",
+    "image": "Zantha_Tablets.jpg",
+    "card": "artifact",
+    "effects": [
+      {
+        "situation": "spell",
+        "bonuses": [
+          {
+            "attribute": "lore",
+            "type": "extra",
+            "value": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Sword of Y'ha-Talla",
+    "image": "Sword_of_Y'ha-Talla.jpg",
+    "card": "artifact",
+    "effects": [
+      {
+        "situation": "combat",
+        "bonuses": [
+          {
+            "attribute": "will",
+            "type": "extra",
+            "value": 2
+          },
+          {
+            "attribute": "strength",
+            "type": "extra",
+            "value": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Wither",
+    "image": "Wither.jpg",
+    "card": "spell",
+    "effects": [
+      {
+        "situation": "combat",
+        "test": {
+          "type": "lore",
+          "modifier": 0
+        },
+        "bonuses": [
+          {
+            "attribute": "strength",
+            "type": "extra",
+            "value": 3
+          }
+        ]
       }
     ]
   }

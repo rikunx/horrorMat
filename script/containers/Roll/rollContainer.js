@@ -17,8 +17,14 @@ function mapDispatchToProps(dispatch) {
     closeRollPrompt() {
       dispatch(actions.closeRollPrompt());
     },
-    setCombat(isCombat) {
-      dispatch(actions.setCombat(isCombat));
+    setModifier(modifier) {
+      dispatch(actions.setModifier(modifier));
+    },
+    promptSituation() {
+      dispatch(actions.promptSituation());
+    },
+    setSituation(situation) {
+      dispatch(actions.setSituation(situation));
     },
     useAbility(shouldUseAbility) {
       dispatch(actions.useAbility(shouldUseAbility));

@@ -4,15 +4,16 @@ import { RollPhases } from '../../enum/index';
 
 const defaultState = {
   test: '',
-  isCombat: false,
   baseRoll: 0,
-  clues: 0,
+  modifier: 0,
+  situation: '',
   abilities: [],
   eligibleAbilities: [],
   eligibleAbilityIndex: 0,
   items: [],
   eligibleItems: [],
   eligibleItemIndex: 0,
+  clues: 0,
   cluesToSpend: 0,
   results: [],
   total: 0,
@@ -27,15 +28,25 @@ function rollReducer(state = defaultState, action) {
         baseRoll: action.baseRoll,
         test: action.test
       };
-    case actions.PromptCombat:
+    case actions.PromptModifier:
       return {
         ...state,
-        phase: RollPhases.Combat
+        phase: RollPhases.Modifier
       };
-    case actions.SetCombat:
+    case actions.SetModifier:
       return {
         ...state,
-        isCombat: action.isCombat
+        modifier: action.modifier
+      };
+    case actions.PromptSituation:
+      return {
+        ...state,
+        phase: RollPhases.Situation
+      };
+    case actions.SetSituation:
+      return {
+        ...state,
+        situation: action.situation
       };
     case actions.PromptAbilities:
       return {

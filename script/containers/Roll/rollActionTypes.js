@@ -1,7 +1,10 @@
 export const SetTest = 'set_test';
 
-export const PromptCombat = 'prompt_combat';
-export const SetCombat = 'set_combat';
+export const PromptModifier = 'prompt_modifier';
+export const SetModifier = 'set_modifier';
+
+export const PromptSituation = 'prompt_situation';
+export const SetSituation = 'set_situation';
 
 export const PromptAbilities = 'prompt_abilities';
 export const SetEligibleAbilities = 'set_eligible_abilities';
