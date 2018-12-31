@@ -11,9 +11,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    promptRoll(test) {
-      dispatch(actions.promptTest(test));
-    },
     closeRollPrompt() {
       dispatch(actions.closeRollPrompt());
     },

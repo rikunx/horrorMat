@@ -10,12 +10,14 @@ export default PropTypes.shape({
   image: PropTypes.string.isRequired,
   card: PropTypes.oneOf([Card.ITEM, Card.WEAPON, Card.TOME, Card.TRINKET, Card.ALLY, Card.ARTIFACT, Card.SPELL])
     .isRequired,
-  effects: PropTypes.shape({
-    situation: Situation.isRequired,
-    bonuses: Bonuses.isRequired,
-    cost: Cost,
-    test: Test,
-    oncePerRound: PropTypes.bool,
-    disposable: PropTypes.bool
-  })
+  effects: PropTypes.arrayOf(
+    PropTypes.shape({
+      situation: Situation.isRequired,
+      bonuses: Bonuses.isRequired,
+      cost: Cost,
+      test: Test,
+      oncePerRound: PropTypes.bool,
+      disposable: PropTypes.bool
+    })
+  )
 });
