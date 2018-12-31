@@ -33,7 +33,17 @@
             "required": ["situation", "bonuses"],
             "properties": {
               "situation": {
-                "enum": ["combat", "research", "spell", "test", "acquire", "reroll", "rest", "reckoning"],
+                "enum": [
+                  "combat",
+                  "research",
+                  "other world",
+                  "spell",
+                  "test",
+                  "acquire",
+                  "reroll",
+                  "rest",
+                  "reckoning"
+                ],
                 "description": "can only be one of the enum values and is required"
               },
               "cost": {

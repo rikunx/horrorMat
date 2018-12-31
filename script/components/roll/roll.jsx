@@ -7,6 +7,7 @@ import Icon from '@material-ui/core/Icon';
 import SituationPrompt from './situationPrompt';
 import TestPrompt from './testPrompt';
 import AbilityPrompt from './abilityPrompt';
+import ItemPrompt from './itemPrompt';
 import * as phases from '../../enum/rollPhases';
 import { Ability, Item } from '../../types';
 import { RollPhases } from '../../enum';
@@ -36,6 +37,7 @@ const Roll = ({
   setModifier,
   promptSituation,
   setSituation,
+  useItem,
   useAbility,
   closeRollPrompt,
   roll
@@ -57,7 +59,7 @@ const Roll = ({
       closePrompt={closeRollPrompt}
     />
     {(() => {
-      if (phase === phases.Ability && eligibleAbilities.length) {
+      if (eligibleAbilities[eligibleAbilityIndex]) {
         return (
           <AbilityPrompt
             classes={classes}
@@ -69,43 +71,34 @@ const Roll = ({
           />
         );
       }
-      return '';
+      return null;
     })()}
     {(() => {
-      {
-        /* if (eligibleItems.length) {
+      if (eligibleItems[eligibleItemIndex]) {
         return (
-          <AbilityPrompt
+          <ItemPrompt
             classes={classes}
-            abilityDialogOpen={phase === Ability}
+            open={phase === phases.Items}
             test={test}
-            ability={eligibleAbilities[eligibleAbilityIndex]}
-            useAbility={useAbility}
+            item={eligibleItems[eligibleItemIndex]}
+            useItem={useItem}
             closePrompt={closeRollPrompt}
           />
         );
-      } */
       }
-      return '';
+      return null;
     })()}
-    {(() => {
-      if (phase === phases.Roll) {
-        return (
-          <TestPrompt
-            classes={classes}
-            rollDialogOpen={phase === phases.Roll}
-            test={test}
-            baseRoll={baseRoll}
-            abilities={abilities}
-            items={items}
-            total={total}
-            closePrompt={closeRollPrompt}
-            roll={roll}
-          />
-        );
-      }
-      return '';
-    })()}
+    <TestPrompt
+      classes={classes}
+      rollDialogOpen={phase === phases.Roll}
+      test={test}
+      baseRoll={baseRoll}
+      abilities={abilities}
+      items={items}
+      total={total}
+      closePrompt={closeRollPrompt}
+      roll={roll}
+    />
   </div>
 );
 
@@ -139,6 +132,7 @@ Roll.propTypes = {
   promptSituation: PropTypes.func.isRequired,
   setSituation: PropTypes.func.isRequired,
   useAbility: PropTypes.func.isRequired,
+  useItem: PropTypes.func.isRequired,
   closeRollPrompt: PropTypes.func.isRequired,
   roll: PropTypes.func.isRequired
 };

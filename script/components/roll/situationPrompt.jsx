@@ -17,6 +17,8 @@ const SituationPrompt = ({ classes, test, open, setSituation, closePrompt }) => 
     open={open}
     TransitionComponent={Transition}
     keepMounted
+    fullWidth={true}
+    maxWidth="md"
     onClose={closePrompt}
     aria-labelledby="alert-dialog-slide-title"
     aria-describedby="alert-dialog-slide-description"
@@ -32,6 +34,9 @@ const SituationPrompt = ({ classes, test, open, setSituation, closePrompt }) => 
     ) : null}
     <Button onClick={() => setSituation(Situation.SPELL)} color="primary">
       Spell
+    </Button>
+    <Button onClick={() => setSituation(Situation.OTHER_WORLD)} color="primary">
+      Other World
     </Button>
     <Button onClick={() => setSituation(Situation.ACQUIRE)} color="primary">
       Acquire

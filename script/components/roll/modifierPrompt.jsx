@@ -16,6 +16,8 @@ const ModifierPrompt = ({ classes, open, modifier, setModifier, promptSituation,
     open={open}
     TransitionComponent={Transition}
     keepMounted
+    fullWidth={true}
+    maxWidth="md"
     onClose={closePrompt}
     aria-labelledby="alert-dialog-slide-title"
     aria-describedby="alert-dialog-slide-description"

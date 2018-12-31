@@ -26,6 +26,9 @@ function mapDispatchToProps(dispatch) {
     useAbility(shouldUseAbility) {
       dispatch(actions.useAbility(shouldUseAbility));
     },
+    useItem(shouldUseItem) {
+      dispatch(actions.useItem(shouldUseItem));
+    },
     roll(numOfDice) {
       dispatch(actions.roll(numOfDice));
     }

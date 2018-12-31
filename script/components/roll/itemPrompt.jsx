@@ -11,32 +11,42 @@ import { Cost } from '../../enum';
 function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
-const AbilityPrompt = ({ classes, open, ability, useAbility, closePrompt }) => {
-  let promptMessage = `Do you want to use your ability to give you ${ability.bonus} bonus dice?`;
-  const cost = ability.cost;
+const ItemPrompt = ({ classes, open, item, useItem, closePrompt }) => {
+  let costMessage = `Do you want to use your <strong>${item.name}</strong> to give you ${
+    item.effect.bonus.value
+  } bonus dice?`;
+  const { cost, disposable, oncePerRound } = item.effect;
   if (cost) {
     switch (cost.type) {
       case Cost.Location:
-        promptMessage = `Are you currently in the ${cost.value}?`;
+        costMessage = `Are you currently in the ${cost.value}?`;
         break;
       case Cost.Health:
-        promptMessage = `Do you want to spend ${cost.value} health to activate your ability and gain ${
-          ability.bonus
+        costMessage = `Do you want to spend ${cost.value} health to activate your ability and gain ${
+          item.effect.bonus.value
         } bonus dice?`;
         break;
       case Cost.Sanity:
-        promptMessage = `Do you want to spend ${cost.value} sanity to activate your ability and gain ${
-          ability.bonus
+        costMessage = `Do you want to spend ${cost.value} sanity to activate your ability and gain ${
+          item.effect.bonus.value
         } bonus dice?`;
         break;
       case Cost.Clue:
-        promptMessage = `Do you want to spend ${cost.value} clue to activate your ability and gain ${
-          ability.bonus
+        costMessage = `Do you want to spend ${cost.value} clue to activate your ability and gain ${
+          item.effect.bonus.value
         } bonus dice?`;
         break;
       default:
         break;
     }
+  }
+  console.log(item);
+  let onceMessage = '';
+  if (disposable) {
+    onceMessage = 'This item must be disposed of after this round.';
+  }
+  if (oncePerRound) {
+    onceMessage = 'This item can only be used once per round.';
   }
   return (
     <Dialog
@@ -53,12 +63,15 @@ const AbilityPrompt = ({ classes, open, ability, useAbility, closePrompt }) => {
       <div className="prompt-background">
         <img src="images/burnt_paper.png" />
       </div>
-      <DialogTitle>{promptMessage}</DialogTitle>
+      <DialogTitle>
+        <div dangerouslySetInnerHTML={{ __html: costMessage }} />
+        <div dangerouslySetInnerHTML={{ __html: onceMessage }} />
+      </DialogTitle>
       <DialogActions>
-        <Button onClick={() => useAbility(false)} color="primary">
+        <Button onClick={() => useItem(false)} color="primary">
           No
         </Button>
-        <Button onClick={() => useAbility(true)} color="primary">
+        <Button onClick={() => useItem(true)} color="primary">
           Yes
         </Button>
       </DialogActions>
@@ -66,18 +79,22 @@ const AbilityPrompt = ({ classes, open, ability, useAbility, closePrompt }) => {
   );
 };
 
-AbilityPrompt.propTypes = {
+ItemPrompt.propTypes = {
   classes: PropTypes.object.isRequired,
   open: PropTypes.bool.isRequired,
-  ability: PropTypes.shape({
+  item: PropTypes.shape({
     cost: PropTypes.shape({
       type: PropTypes.string.isRequired,
       value: PropTypes.oneOf([PropTypes.string, PropTypes.number])
     }),
-    bonus: PropTypes.number.isRequired
+    effect: PropTypes.shape({
+      bonus: PropTypes.shape({
+        value: PropTypes.number.isRequired
+      }).isRequired
+    }).isRequired
   }),
-  useAbility: PropTypes.func.isRequired,
+  useItem: PropTypes.func.isRequired,
   closePrompt: PropTypes.func.isRequired
 };
 
-export default AbilityPrompt;
+export default ItemPrompt;

@@ -66,7 +66,7 @@ export function useAbility(shouldUseAbility) {
 
 export function useItem(shouldUseItem) {
   return {
-    type: actionTypes.UseAbility,
+    type: actionTypes.UseItem,
     shouldUseItem
   };
 }
@@ -87,7 +87,7 @@ export function roll(numOfDice) {
         throw new Error(await response.text());
       }
 
-      const results = await response.json();
+      const { results } = await response.json();
       dispatch({ type: actionTypes.Rolled, results });
 
       // todo handle reroll stuff here

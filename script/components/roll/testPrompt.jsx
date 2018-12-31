@@ -19,6 +19,8 @@ const TestPrompt = ({ classes, rollDialogOpen, test, baseRoll, abilities, items,
     open={rollDialogOpen}
     TransitionComponent={Transition}
     keepMounted
+    fullWidth={true}
+    maxWidth="md"
     onClose={closePrompt}
     aria-labelledby="alert-dialog-slide-title"
     aria-describedby="alert-dialog-slide-description"
