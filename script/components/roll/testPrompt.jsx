@@ -37,7 +37,7 @@ const TestPrompt = ({ classes, rollDialogOpen, test, baseRoll, abilities, items,
         ))}
         {items.map(item => (
           <span key={item._id}>
-            {item.name}: +{item.effects[0].bonuses[0].value}
+            {item.name}: +{item.effect.bonus.value}
           </span>
         ))}
       </DialogContentText>

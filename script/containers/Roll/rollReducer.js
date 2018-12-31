@@ -25,118 +25,84 @@ const defaultState = {
 };
 
 function retrieveEligibleItems(items, attribute, situation) {
+  const eligibleItems = items
+    .map(({ effects, ...item }) => ({
+      ...item,
+      effect: effects.reduce((endEffect, { bonuses, ...effect }) => {
+        if (effect.situation === situation || effect.situation === Situation.TEST) {
+          return {
+            ...effect,
+            bonus: bonuses.find(
+              bonus =>
+                (bonus.attribute === attribute || bonus.attribute === Attributes.ANY) &&
+                (bonus.type !== BonusType.REROLL && bonus.type !== BonusType.CLUE)
+            )
+          };
+        }
+        return endEffect;
+      }, null)
+    }))
+    .filter(item => item.effect.bonus);
   return {
-    eligibleItems: items
-      .map(item => ({
-        ...item,
-        effects: item.effects.filter(
-          effect =>
-            (effect.oncePerRound || effect.disposable) &&
-            (effect.situation === situation || effect.situation === Situation.TEST) &&
-            effect.bonuses.find(
-              bonus =>
-                (bonus.attribute === attribute || bonus.attribute === Attributes.ANY) &&
-                (bonus.type !== BonusType.REROLL && bonus.type !== BonusType.CLUE)
-            )
-        )
-      }))
-      .filter(item => item.effects.length > 0),
-    items: items
-      .map(item => ({
-        ...item,
-        effects: item.effects.filter(
-          effect =>
-            !(effect.oncePerRound || effect.disposable) &&
-            (effect.situation === situation || effect.situation === Situation.TEST) &&
-            effect.bonuses.find(
-              bonus =>
-                (bonus.attribute === attribute || bonus.attribute === Attributes.ANY) &&
-                (bonus.type !== BonusType.REROLL && bonus.type !== BonusType.CLUE)
-            )
-        )
-      }))
-      .filter(item => item.effects.length > 0)
+    eligibleItems: eligibleItems.filter(({ effect }) => effect.oncePerRound || effect.disposable),
+    items: eligibleItems.filter(({ effect }) => !(effect.oncePerRound || effect.disposable))
   };
 }
 
 function retrieveEligibleRerollItems(items, attribute, situation) {
+  const eligibleItems = items
+    .map(({ effects, ...item }) => ({
+      ...item,
+      effect: effects.reduce((endEffect, { bonuses, ...effect }) => {
+        if (effect.situation === situation || effect.situation === Situation.TEST) {
+          return {
+            ...effect,
+            bonus: bonuses.find(
+              bonus =>
+                (bonus.attribute === attribute || bonus.attribute === Attributes.ANY) && bonus.type === BonusType.REROLL
+            )
+          };
+        }
+        return endEffect;
+      }, null)
+    }))
+    .filter(item => item.effect.bonus);
   return {
-    eligibleRerollItems: items
-      .map(item => ({
-        ...item,
-        effects: item.effects.filter(
-          effect =>
-            (effect.oncePerRound || effect.disposable) &&
-            (effect.situation === situation || effect.situation === Situation.TEST) &&
-            effect.bonuses.find(
-              bonus =>
-                (bonus.attribute === attribute || bonus.attribute === Attributes.ANY) && bonus.type === BonusType.REROLL
-            )
-        )
-      }))
-      .filter(item => item.effects.length > 0),
-    rerollItems: items
-      .map(item => ({
-        ...item,
-        effects: item.effects.filter(
-          effect =>
-            !(effect.oncePerRound || effect.disposable) &&
-            (effect.situation === situation || effect.situation === Situation.TEST) &&
-            effect.bonuses.find(
-              bonus =>
-                (bonus.attribute === attribute || bonus.attribute === Attributes.ANY) && bonus.type === BonusType.REROLL
-            )
-        )
-      }))
-      .filter(item => item.effects.length > 0)
+    eligibleRerollItems: eligibleItems.filter(({ effect }) => effect.oncePerRound || effect.disposable),
+    rerollItems: eligibleItems.filter(({ effect }) => !(effect.oncePerRound || effect.disposable))
   };
 }
 
 function retrieveRollEligibleAbilities(abilities, attribute, situation) {
+  const eligibleAbilities = abilities
+    .filter(ability => ability.situation === situation || ability.situation === Situation.TEST)
+    .map(({ bonuses, ...ability }) => ({
+      ...ability,
+      bonus: bonuses.find(
+        bonus =>
+          (bonus.attribute === attribute || bonus.attribute === Attributes.ANY) &&
+          (bonus.type !== BonusType.REROLL && bonus.type !== BonusType.CLUE)
+      )
+    }));
   return {
-    abilities: abilities.filter(
-      ability =>
-        !ability.oncePerRound &&
-        (ability.situation === situation || ability.situation === Situation.TEST) &&
-        ability.bonuses.find(
-          bonus =>
-            (bonus.attribute === attribute || bonus.attribute === Attributes.ANY) &&
-            (bonus.type !== BonusType.REROLL && bonus.type !== BonusType.CLUE)
-        )
-    ),
-    eligibleAbilities: abilities.filter(
-      ability =>
-        ability.oncePerRound &&
-        (ability.situation === situation || ability.situation === Situation.TEST) &&
-        ability.bonuses.find(
-          bonus =>
-            (bonus.attribute === attribute || bonus.attribute === Attributes.ANY) &&
-            (bonus.type !== BonusType.REROLL && bonus.type !== BonusType.CLUE)
-        )
-    )
+    abilities: eligibleAbilities.filter(ability => !ability.oncePerRound),
+    eligibleAbilities: eligibleAbilities.filter(ability => ability.oncePerRound)
   };
 }
 
 function retrieveEligibleRerollAbilities(abilities, attribute, situation) {
+  const eligibleAbilities = abilities
+    .filter(ability => ability.situation === situation || ability.situation === Situation.TEST)
+    .map(({ bonuses, ...ability }) => ({
+      ...ability,
+      bonus: bonuses.find(
+        bonus =>
+          (bonus.attribute === attribute || bonus.attribute === Attributes.ANY) && bonus.type === BonusType.REROLL
+      )
+    }));
   return {
-    rerollAbilities: abilities.filter(
-      ability =>
-        !ability.oncePerRound &&
-        (ability.situation === situation || ability.situation === Situation.TEST) &&
-        ability.bonuses.find(
-          bonus =>
-            (bonus.attribute === attribute || bonus.attribute === Attributes.ANY) && bonus.type === BonusType.REROLL
-        )
-    ),
-    eligibleRerollAbilities: abilities.filter(
-      ability =>
-        ability.oncePerRound &&
-        (ability.situation === situation || ability.situation === Situation.TEST) &&
-        ability.bonuses.find(
-          bonus =>
-            (bonus.attribute === attribute || bonus.attribute === Attributes.ANY) && bonus.type === BonusType.REROLL
-        )
-    )
+    rerollAbilities: eligibleAbilities.filter(ability => !ability.oncePerRound),
+    eligibleRerollAbilities: eligibleAbilities.filter(ability => ability.oncePerRound)
   };
 }
 
@@ -189,33 +155,52 @@ function rollReducer(state = defaultState, action) {
         rerollItems,
         eligibleRerollItems,
         phase,
+        total:
+          state.modifier +
+          state.baseRoll +
+          items.reduce((total, item) => item.effect.bonus.value + total, 0) +
+          abilities.reduce((total, ability) => ability.bonus.value + total, 0),
         situation: action.situation
       };
     }
     case actions.UseAbility: {
-      const { abilities, eligibleAbilities, eligibleAbilityIndex } = state;
+      const { modifier, baseRoll, items, abilities, eligibleAbilities, eligibleAbilityIndex } = state;
       let phase = RollPhases.Ability;
       if (eligibleAbilityIndex + 1 >= eligibleAbilities.length - 1) {
         phase = RollPhases.Items;
       }
+      const newAbilities = action.shouldUseAbility
+        ? [...abilities, eligibleAbilities[eligibleAbilityIndex]]
+        : abilities;
       return {
         ...state,
         eligibleAbilityIndex: eligibleAbilityIndex + 1,
-        abilities: action.shouldUseAbility ? [...abilities, eligibleAbilities[eligibleAbilityIndex]] : abilities,
-        phase
+        abilities: newAbilities,
+        phase,
+        total:
+          modifier +
+          baseRoll +
+          items.reduce((total, item) => item.effect.bonus.value + total, 0) +
+          newAbilities.reduce((total, ability) => ability.bonus.value + total, 0)
       };
     }
     case actions.UseItem: {
-      const { items, eligibleItems, eligibleItemIndex } = state;
+      const { modifier, baseRoll, items, abilities, eligibleItems, eligibleItemIndex } = state;
       let phase = RollPhases.Items;
       if (eligibleItemIndex + 1 >= eligibleItems.length - 1) {
         phase = RollPhases.Roll;
       }
+      const newItems = action.shouldUseItem ? [...items, eligibleItems[eligibleItemIndex]] : items;
       return {
         ...state,
         eligibleItemIndex: eligibleItemIndex + 1,
-        items: [...items, eligibleItems[eligibleItemIndex]],
-        phase
+        items: newItems,
+        phase,
+        total:
+          modifier +
+          baseRoll +
+          newItems.reduce((total, item) => item.effect.bonus.value + total, 0) +
+          abilities.reduce((total, ability) => ability.bonus.value + total, 0)
       };
     }
     case actions.PromptRoll:
